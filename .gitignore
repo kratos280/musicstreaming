@@ -14,3 +14,4 @@ _ide_helper.php
 .idea
 app/config/local/database.php
 MusicStreaming.iml
+MusicStream.iml

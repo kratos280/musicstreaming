@@ -123,7 +123,6 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'Barryvdh\MigrationGenerator\MigrationGeneratorServiceProvider',
-        'Adavkay\Soundcloud\SoundcloudServiceProvider',
 
 	),
 
@@ -193,5 +192,10 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 
 	),
+
+    'soundcloud' => array(
+        'client_id' => '9b1a5a994b8e973be98bc5ea1ea6f212',
+        'client_secret' => 'f10004d23e3d232887ed2748052a8d5b'
+    )
 
 );
