@@ -17,3 +17,5 @@ Route::get('/', function()
 });
 
 Route::get('/search_result','SearchResultController@index');
+Route::get('/get_list_songs','ItuneRSSReaderController@index');
+Route::get('/play','PlayController@index');
