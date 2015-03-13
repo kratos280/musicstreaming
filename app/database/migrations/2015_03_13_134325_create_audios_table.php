@@ -16,7 +16,7 @@ class CreateAudiosTable extends Migration {
 		{
             $table->engine = 'InnoDB';
 
-            $table->bigIncrements('audio_id')->unsigned();
+            $table->bigInteger('audio_id')->unsigned();
             $table->text('title')->nullable();
             $table->text('description')->nullable();
             $table->string('artwork_url', 255)->default('');
@@ -28,6 +28,8 @@ class CreateAudiosTable extends Migration {
 
             $table->softDeletes();
 			$table->timestamps();
+
+            $table->primary('audio_id');
 		});
 	}
 
