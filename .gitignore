@@ -15,3 +15,10 @@ _ide_helper.php
 app/config/local/database.php
 MusicStreaming.iml
 MusicStream.iml
+
+.vagrant
+.idea
+Vagrantfile
+Berksfile
+Berksfile.lock
+composer.phar
