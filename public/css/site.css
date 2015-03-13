@@ -35,3 +35,14 @@ body > .container {
 code {
     font-size: 80%;
 }
+
+.panel{
+    background-color: #fff;
+    border-color: #ddd;
+    border-radius: 4px 4px 0 0;
+    border-width: 1px;
+    box-shadow: none;
+    padding-top: 20px;
+    margin-top: 10px ;
+
+}
