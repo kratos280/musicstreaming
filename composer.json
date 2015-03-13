@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"barryvdh/laravel-ide-helper": "~1.11",
-        "barryvdh/laravel-migration-generator": "dev-master"
+        "barryvdh/laravel-migration-generator": "dev-master",
+		"adavkay/laravel-soundcloud": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

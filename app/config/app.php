@@ -123,6 +123,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'Barryvdh\MigrationGenerator\MigrationGeneratorServiceProvider',
+        'Adavkay\Soundcloud\SoundcloudServiceProvider',
 
 	),
 
