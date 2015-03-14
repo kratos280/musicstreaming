@@ -1,5 +1,7 @@
 <?php
 
+require_once(__DIR__.'/../../vendor/magpierss-0.72/rss_fetch.inc');
+
 class HomeController extends BaseController {
 
 	/*
@@ -20,17 +22,23 @@ class HomeController extends BaseController {
         if( Auth::check() ) {
             $user = Auth::user();
         }
-        $client = new Desarrolla2\RSSClient\RSSClient();
-        $client->addFeeds(['https://itunes.apple.com/us/rss/topsongs/limit=10/xml']);
-        $topSongs = $client->fetch();
-        $client->addFeeds(['https://itunes.apple.com/us/rss/topalbums/limit=10/xml']);
-        $topAnbums = $client->fetch();
-        $client->addFeeds(['https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=10/rss.xml']);
-        $newReleases = $client->fetch();
+//        $client = new Desarrolla2\RSSClient\RSSClient();
+//        $client->addFeeds(['https://itunes.apple.com/us/rss/topsongs/limit=10/xml']);
+//        $topSongs = $client->fetch();
+//        $client->addFeeds(['https://itunes.apple.com/us/rss/topalbums/limit=10/xml']);
+//        $topAlbums = $client->fetch();
+//        $client->addFeeds(['https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=10/rss.xml']);
+//        $newReleases = $client->fetch();
+//        dd($topAlbums);
+        $topSongs = fetch_rss("https://itunes.apple.com/us/rss/topsongs/limit=10/xml")->items;
+
+        $topAlbums = fetch_rss("https://itunes.apple.com/us/rss/topalbums/limit=10/xml")->items;
+
+        $newReleases = fetch_rss("https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=10/rss.xml")->items;
 
         return View::make('index', [
             'topSongs' => $topSongs,
-            'topAnbums' => $topAnbums,
+            'topAlbums' => $topAlbums,
             'newReleases' => $newReleases,
         ]);
 	}
