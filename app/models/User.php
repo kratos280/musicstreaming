@@ -24,4 +24,9 @@ class User extends BaseModel implements UserInterface {
         return $this->hasMany('Playlist', 'user_id', 'user_id');
     }
 
+    public function comments()
+    {
+        return $this->hasMany('Comment', 'user_id', 'user_id');
+    }
+
 }
