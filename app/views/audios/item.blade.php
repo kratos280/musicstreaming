@@ -41,7 +41,7 @@
     });
 </script>
 <div class="offset2 span8">
-    <img src="{{ url('images/bookmark-icon.jpg') }}" width="60px" id="bookmark-btn" data-audio-id="{{{ $item->id }}}">
+    <img src="{{ url('images/bookmark-icon.jpg') }}" width="60px" id="bookmark-btn">
 </div>
 
 </div>
@@ -51,9 +51,9 @@
         @if( count($relateItems) > 0 )
         @foreach( $relateItems as $item )
         <script>
-            playlistIds.push({{{$item->id}}});
+            playlistIds.push({{{$item->id ? $item->id : $item->audio_id}}});
         </script>
-        <a href="/audios/{{{ $item->id }}}" class="list-group-item">
+        <a href="/audios/{{{ $item->id ? $item->id : $item->audio_id }}}" class="list-group-item">
             <div class="media-left">
                 <img alt="64x64" data-src="holder.js/64x64" class="media-object"
                      style="width: 128px; height: 128px;"
@@ -61,7 +61,7 @@
                      data-holder-rendered="true">
             </div>
             <div class="media-body">
-                <h4 class="media-heading" style="text-align: left!important;" id="{{{$item->id}}}">
+                <h4 class="media-heading" style="text-align: left!important;" id="{{{$item->id ? $item->id : $item->audio_id}}}">
                     {{{ $item->title }}}
                 </h4>
                 <p></p>
@@ -71,9 +71,7 @@
         @endif
     </div>
 </div>
-<<<<<<< HEAD
 {{ HTML::script('js/play.js') }}
-=======
 
 <div id="select-box" style="display: none">
     <div class="lightbox-box__box">
@@ -99,6 +97,5 @@
         </div>
     </div>
 </div>
->>>>>>> 726e20010fa15d2b92db44d0bece66ec9d464ec8
 @stop
 

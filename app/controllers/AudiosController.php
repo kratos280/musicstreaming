@@ -31,6 +31,31 @@ class AudiosController extends BaseController
         ]);
     }
 
+    public function playPlaylist($audio_id, $playlist_id) {
+        $playlist_audios = AudioPlaylist::with('audio')->where('playlist_id', '=', $playlist_id)->get();
+        $match = 0;
+        $relateItems = array();
+        foreach($playlist_audios as $playlist_audio) {
+            if ($playlist_audio->audio->audio_id == $audio_id) {
+                $match = 1;
+            }
+            if (!$match || $playlist_audio->audio->audio_id == $audio_id) {
+                continue;
+            }
+            $relateItems[] = $playlist_audio->audio;
+
+        }
+        $playlist = Playlist::all();
+        $bookmarkedPlaylistIds = AudioPlaylist::where('audio_id', '=', $audio_id)->lists('playlist_id');
+
+        return View::make('audios.item', [
+            'audio_id' => $audio_id,
+            'relateItems' => $relateItems,
+            'playlists' => $playlist,
+            'bookmarkedPlaylistIds' => $bookmarkedPlaylistIds,
+        ]);
+    }
+
     public function getPlaylists($audio_id)
     {
         View::make('bookmarks.playlist_popup', [

@@ -22,6 +22,7 @@ Route::group(
     ]
     , function() {
         Route::get('/{audio_id}', 'AudiosController@getItem');
+        Route::get('/{audio_id}/{playlist_id}', 'AudiosController@playPlaylist');
     });
 
 Route::group(
