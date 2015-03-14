@@ -140,3 +140,7 @@ code {
 .media-left p {
     margin-top: 20px;
 }
+
+.playing {
+    background-color: #ef7c61;
+}
