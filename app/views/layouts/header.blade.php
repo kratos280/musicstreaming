@@ -4,23 +4,23 @@
         <div class="container">
             <a class="navbar-brand" href="/"></a>
             <ul class="nav navbar-nav">
-                <li class="active"><a href=""> Home</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">My Profile</a></li>
-                <li><a href="">Logout</a></li>
-                <li><a href="">Sign Up</a></li>
-                <li><a href="">Log In</a></li>
+                <li class="active"><a href="{{{url('/')}}}"> ホーム</a></li>
+                @if (Auth::check())
+                    <li><a href="{{{url('/auth/logout')}}}">ログアウト</a></li>
+                @else
+                    <li><a href="{{{url('/auth/login')}}}">ログイン</a></li>
+                @endif
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <form class="navbar-form" role="search">
+                    <div class="navbar-form" role="search">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                            <input type="text" class="form-control" placeholder="Search" name="keyword" id="srch-term">
                             <div class="input-group-btn">
-                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                <button class="btn btn-default" data-url="{{{url('/list')}}}" id="searchButton"><i class="glyphicon glyphicon-search"></i></button>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
@@ -35,5 +35,8 @@
             </ul>
         </div>
     </nav>
+
+    {{ HTML::script('js/global_js.js') }}
+
 </header>
 

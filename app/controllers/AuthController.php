@@ -52,9 +52,16 @@ class AuthController extends \BaseController {
             $user->save();
 
             Auth::login($user);
+
+            return Redirect::to('/');
         } catch(Exception $e) {
             dd($e);
         }
+    }
+
+    public function logout() {
+        Auth::logout();
+        return Redirect::to('/');
     }
 
 	/**

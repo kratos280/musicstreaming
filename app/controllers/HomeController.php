@@ -23,9 +23,9 @@ class HomeController extends BaseController {
             $user = Auth::user();
         }
 
-        $topSongs = fetch_rss("https://itunes.apple.com/us/rss/topsongs/limit=10/xml")->items;
-        $topAlbums = fetch_rss("https://itunes.apple.com/us/rss/topalbums/limit=10/xml")->items;
-        $newReleases = fetch_rss("https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=10/rss.xml")->items;
+        $topSongs = fetch_rss("https://itunes.apple.com/jp/rss/topsongs/limit=100/xml")->items;
+        $topAlbums = fetch_rss("https://itunes.apple.com/jp/rss/topalbums/limit=6/xml")->items;
+        $newReleases = fetch_rss("https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=15/genre=17/rss.xml")->items;
 
         return View::make('index', [
             'topSongs' => $topSongs,

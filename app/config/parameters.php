@@ -6,5 +6,5 @@
  * Time: 3:01
  */
 return [
-    'searchResultLimit' => 5,
+    'searchLimit' => 20,
 ];
