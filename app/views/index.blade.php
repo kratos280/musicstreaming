@@ -15,6 +15,11 @@
 
     <div class="col-md-4">
         <div class="list-group media-list">
+            <div class="row-padded">
+                <div class="span4">
+                    Top 100 songs
+                </div>
+            </div>
             @foreach( $topSongs as $key => $topSong )
             <a href="/list?key={{{ $topSong["title"] }}}" class="list-group-item">
                 <div class="media-left">
@@ -58,10 +63,11 @@
                     <div class="item {{{$class}}}">
                         <div class="row">
                     @endif
-                        <div class="col-sm-4"><a href="/list?key={{{ $newRelease["title"] }}}"><img src="{{{ str_replace("100x100", "200x200", $newRelease["itms"]["coverart"]) }}}" alt="Image"
+                        <div class="col-sm-4">
+                            <a href="/list?key={{{ $newRelease["title"] }}}"><img src="{{{ str_replace("100x100", "200x200", $newRelease["itms"]["coverart"]) }}}" alt="Image"
                                 class="img-responsive">
-                            {{{ $newRelease["title"] }}}
                             </a>
+                                {{{ $newRelease["title"] }}}
                         </div>
                     @if ($key % 3 == 2)
                         </div>
