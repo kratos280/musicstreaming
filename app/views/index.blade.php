@@ -98,7 +98,7 @@
             <!--/myCarousel-->
         </div>
         <div class="row panel">
-            @foreach($topAnbums as $topAnbum)
+            @foreach($topAlbums as $topAlbum)
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
                     <img alt="100%x200" data-src="holder.js/100%x200"
@@ -107,9 +107,9 @@
                          data-holder-rendered="true">
 
                     <div class="caption">
-                        <h3>{{{ $topAnbum->getTitle() }}}</h3>
+                        <h3>{{{ $topAlbum->getTitle() }}}</h3>
 
-                        <p>{{{ $topAnbum->getLink() }}}</p>
+                        <p>{{{ $topAlbum->getLink() }}}</p>
 
                         <p><a role="button" class="btn btn-primary" href="#">View it</a></p>
                     </div>
