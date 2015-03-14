@@ -24,11 +24,16 @@
             </div>
         </div>
         <div class="col-md-8">
+            <div class="row row-padded">
+                <div class="span4">
+                Top Songs
+                </div>
+            </div>
             <div class="row">
                 <div id="myCarousel" class="carousel slide">
 
                     <!-- Carousel items -->
-                    <div class="carousel-inner">
+                    <div class="carousel-inner" id="topSongs">
                         <div class="item active">
                             <div class="row">
                                 <div class="col-sm-4"><a href="#x"><img src="{{ url("images/38528.jpg") }}" alt="Image"
@@ -86,6 +91,11 @@
                     <a class="right carousel-control" href="#myCarousel" data-slide="next"></a>
                 </div>
                 <!--/myCarousel-->
+            </div>
+            <div class="row row-padded top">
+                <div class="span4">
+                    Top Albums
+                </div>
             </div>
             <div class="row panel">
                 <div class="col-sm-6 col-md-4">
