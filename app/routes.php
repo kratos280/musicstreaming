@@ -21,7 +21,15 @@ Route::group(
         'prefix' => 'audios'
     ]
     , function() {
-
-        // DASHBOARD
         Route::get('/{audio_id}', 'AudiosController@getItem');
     });
+
+Route::group(
+    [
+        'prefix' => 'auth'
+    ]
+    , function() {
+        Route::get('login', 'AuthController@index');
+        Route::get('connect', 'AuthController@connect');
+});
+
