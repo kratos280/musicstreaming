@@ -19,3 +19,8 @@ Route::get('/', function()
 Route::get('/search_result','SearchResultController@index');
 Route::get('/get_list_songs','ItuneRSSReaderController@index');
 Route::get('/play','PlayController@index');
+
+Route::group(array('prefix' => 'auth'), function() {
+    Route::get('login', 'AuthController@index');
+    Route::get('connect', 'AuthController@connect');
+});
