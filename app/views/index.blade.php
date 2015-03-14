@@ -12,10 +12,14 @@
 
 @section('content')
 <div class="row">
+
     <div class="col-md-4">
         <div class="list-group media-list">
-            @foreach( $topSongs as $topSong )
+            @foreach( $topSongs as $key => $topSong )
             <a href="/list?key={{{ $topSong["title"] }}}" class="list-group-item">
+                <div class="media-left">
+                    <p>{{{++$key}}}</p>
+                </div>
                 <div class="media-left">
                     <img alt="64x64" data-src="holder.js/64x64" class="media-object"
                          style="width: 64px; height: 64px;"

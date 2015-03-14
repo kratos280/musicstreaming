@@ -7,9 +7,14 @@
 @stop
 
 @section('content')
-<div class="col-md-8" style="text-align: center;margin-top:50px">
+<div class="col-md-8 col-md-offset-2" style="text-align: center;margin-top:50px">
+    <div class="row row-padded">
+        <div class="span4">
+            {{{count($items)}}}結果
+        </div>
+    </div>
+
     <div class="list-group media-list">
-        @if( count($items) > 0 )
         @foreach( $items as $item )
         <a href="/audios/{{{ $item->id }}}?key={{{ $key }}}" class="list-group-item">
             <div class="media-left">
@@ -26,9 +31,6 @@
             </div>
         </a>
         @endforeach
-        @else
-        <h2>No Result</h2>
-        @endif
     </div>
 </div>
 @stop

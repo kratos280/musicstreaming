@@ -40,5 +40,6 @@ Route::group(
     , function() {
         Route::resource('playlists', 'PlaylistController');
         Route::get('me', 'AccountController@getIndex');
+        Route::get('auth/logout', 'AuthController@logout');
     });
 

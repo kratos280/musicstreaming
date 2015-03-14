@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="jp">
   <head>
     <meta charset="utf-8">
     <title>@yield('title', 'Music Streaming')</title>

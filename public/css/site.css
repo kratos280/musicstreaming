@@ -69,3 +69,14 @@ code {
     color: #333333;
     overflow: hidden;
 }
+
+.list-group {
+    margin-bottom: 20px;
+    padding-left: 0;
+    max-height: 1215px;
+    overflow: scroll;
+}
+
+.media-left p {
+    margin-top: 20px;
+}
