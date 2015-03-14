@@ -20,6 +20,10 @@ class BookmarksController extends BaseController
             App::abort(404);
         }
         $selectedPlaylistIds = Input::get('bookmarks');
+
+        // Delete audio playlist record
+        AudioPlaylist::where('audio_id', '=', $audio_id)->delete();
+
         if( $selectedPlaylistIds ) {
             $firstAudio = Audio::find($audio_id);
             // Add to application Audio table
@@ -44,9 +48,6 @@ class BookmarksController extends BaseController
                 $new_audio->save();
             }
 
-            // Delete audio playlist record
-            AudioPlaylist::where('audio_id', '=', $audio_id)->delete();
-
             foreach( $selectedPlaylistIds as $selectedPlaylistId ) {
                 $audioPlaylist = new AudioPlaylist();
                 $audioPlaylist->playlist_id = $selectedPlaylistId;
@@ -54,5 +55,7 @@ class BookmarksController extends BaseController
                 $audioPlaylist->save();
             }
         }
+
+        return Redirect::back();
     }
 } 

@@ -13,6 +13,13 @@ class PlaylistController extends \BaseController {
         if( empty($user) ) {
             App::abort(404);
         }
+
+        $playlists = new \Illuminate\Database\Eloquent\Collection();
+        $playlists = Playlist::where('user_id', '=', $user->user_id)->get();
+
+        return View::make('playlists.index', [
+            'playlists' => $playlists
+        ]);
 	}
 
 
@@ -76,7 +83,7 @@ class PlaylistController extends \BaseController {
         }
         $playlist_audios = AudioPlaylist::with('audio')->where('playlist_id', '=', $playlist_id)->get();
 
-        return View::make('playlists.index', [
+        return View::make('playlists.item', [
             'playlist' => $playlist,
             'playlist_audios' => $playlist_audios,
             'user' => $user

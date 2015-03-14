@@ -31,15 +31,16 @@
 <script>
     $(function() {
         $("#bookmark-btn").on("click", function () {
-            var audio_id = $(this).data['audio-id'];
-            var data = $.param({
-                audio_id: audio_id
-            });
             $("#select-box").show();
             $("#select-box").addClass("lightbox-layer");
             $(".lightbox-layer").height($("body").height());
-
         });
+
+        $("#lightbox-close").on("click", function () {
+            $("#select-box").removeClass("lightbox-layer");
+            $("#select-box").hide();
+        });
+
     });
 </script>
 <div class="offset2 span8">
@@ -73,12 +74,12 @@
 
 <div id="select-box" style="display: none">
     <div class="lightbox-box__box">
-        <p class="lightbox-box__button" id="lightbox-close"><img src="" height="27" width="60" alt=""></p>
+        <p class="lightbox-box__button" id="lightbox-close"><img src="{{ url('images/lightbox_close.png') }}" height="27" width="60" alt=""></p>
         <div class="lightbox-box__inner">
             <div id="lightbox-area" class="creative-box no-pagenation">
                 @if( count($playlists) > 0 )
                 {{ Form::open(['url' => 'bookmark/create', 'method' => 'POST', 'id' => 'form-create']) }}
-                {{ Form::hidden('audio_id', $item->id) }}
+                {{ Form::hidden('audio_id', $audio_id) }}
                 @foreach( $playlists as $playlist )
                 {{{ $playlist->name }}}
                 {{ Form::checkbox('bookmarks[]', $playlist->playlist_id, in_array($playlist->playlist_id, $bookmarkedPlaylistIds), ['class' => 'form-control']) }}
