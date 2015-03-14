@@ -20,7 +20,7 @@ class AccountController extends BaseController
 
         return View::make('account.index', [
             'user' => $user,
-            'playlist' => $playlists
+            'playlists' => $playlists
         ]);
     }
 }

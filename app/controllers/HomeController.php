@@ -37,14 +37,15 @@ class HomeController extends BaseController {
 
     public function getPlayList()
     {
-        $title = Input::get('title');
-        if( isset($title) ) {
+        $key = Input::get('key');
+        if( isset($key) ) {
             // Call to SoundClound API
             $soundCloudService = new \Soundcloud\Service(Config::get('app.soundcloud.client_id'), Config::get('app.soundcloud.client_secret'));
-            $items_json = $soundCloudService->get('tracks', ['q' => $title, 'limit' => Config::get('parameters.searchLimit')]);
+            $items_json = $soundCloudService->get('tracks', ['q' => $key, 'limit' => Config::get('parameters.searchLimit')]);
             $items = json_decode($items_json);
             return View::make('list', [
                 'items' => $items,
+                'key' => $key
             ]);
         }
     }

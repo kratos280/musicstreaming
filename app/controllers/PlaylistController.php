@@ -9,7 +9,8 @@ class PlaylistController extends \BaseController {
 	 */
 	public function index()
 	{
-        if( Auth::check() ) {
+        $user = Auth::user();
+        if( empty($user) ) {
             App::abort(404);
         }
 	}
@@ -22,11 +23,12 @@ class PlaylistController extends \BaseController {
 	 */
 	public function create()
 	{
-		if( Auth::check() ) {
+        $user = Auth::user();
+        if( empty($user) ) {
             App::abort(404);
         }
         return View::make('playlists.create', [
-
+            'user' => $user,
         ]);
 	}
 
@@ -57,15 +59,28 @@ class PlaylistController extends \BaseController {
 	}
 
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
+    /**
+     * @param $playlist_id
+     * @return \Illuminate\View\View
+     */
+    public function show($playlist_id)
 	{
-		//
+		$user = Auth::user();
+        if( empty($user) ) {
+            App::abort(404);
+        }
+
+        $playlist = Playlist::find($playlist_id);
+        if( empty($playlist) ) {
+            App::abort(404);
+        }
+        $playlist_audios = AudioPlaylist::with('audio')->where('playlist_id', '=', $playlist_id)->get();
+
+        return View::make('playlists.index', [
+            'playlist' => $playlist,
+            'playlist_audios' => $playlist_audios,
+            'user' => $user
+        ]);
 	}
 
 

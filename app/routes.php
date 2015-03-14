@@ -24,8 +24,6 @@ Route::group(
         Route::get('/{audio_id}', 'AudiosController@getItem');
     });
 
-Route::resource('playlists', 'PlaylistController');
-
 Route::group(
     [
         'prefix' => 'auth'
@@ -34,4 +32,13 @@ Route::group(
         Route::get('login', 'AuthController@index');
         Route::get('connect', 'AuthController@connect');
 });
+
+Route::group(
+    [
+        'before' => 'auth'
+    ]
+    , function() {
+        Route::resource('playlists', 'PlaylistController');
+        Route::get('me', 'AccountController@getIndex');
+    });
 
