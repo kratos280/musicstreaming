@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>@yield('title', 'Music Streaming')</title>
-      <link rel="stylesheet" href="#">
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">

@@ -5,7 +5,7 @@
 @stop
 
 @section('scripts')
-<script src="#">
+<script>
     $('.carousel').carousel()
 </script>
 @stop
