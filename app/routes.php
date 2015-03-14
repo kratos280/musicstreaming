@@ -40,5 +40,7 @@ Route::group(
     , function() {
         Route::resource('playlists', 'PlaylistController');
         Route::get('me', 'AccountController@getIndex');
+        Route::post('bookmark/create', 'BookmarksController@postItem');
+        Route::get('audios/playlists', 'AudiosController@getPlaylists');
     });
 

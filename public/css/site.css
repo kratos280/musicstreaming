@@ -62,3 +62,63 @@ code {
     background-color: #F7F7F7;
     border-bottom: 1px solid #DDD;
 }
+
+.lightbox-layer {
+    z-index: 20;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.lightbox-box {
+    width: 650px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 5px;
+    background-color: #eee;
+}
+
+.lightbox-inner {
+    padding: 30px;
+    border: 1px solid #d7d7d7;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.lightbox-sub {
+    width: 140px;
+    float: left;
+}
+
+.lightbox-main {
+    width: 320px;
+    float: right;
+}
+.lightbox-box__follow,
+.lightbox-box__outline {
+    width: 730px;
+    margin: 50px auto;
+}
+
+.lightbox-box__follow-inner,
+.lightbox-box__inner {
+    width: 730px;
+    padding: 30px;
+    border-radius: 2px;
+    background-color: #fff;
+}
+
+.lightbox-box__box {
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 730px;
+}
+
+.lightbox-box__inner {
+    width: 100%;
+}

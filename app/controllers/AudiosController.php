@@ -20,9 +20,21 @@ class AudiosController extends BaseController
             return $item->id != $audio_id;
         });
 
+        $playlists = Playlist::all();
+        $bookmarkedPlaylistIds = AudioPlaylist::where('audio_id', '=', $audio_id)->lists('playlist_id');
+
         return View::make('audios.item', [
             'audio_id' => $audio_id,
-            'relateItems' => $relateItems
+            'relateItems' => $relateItems,
+            'playlists' => $playlists,
+            'bookmarkedPlaylistIds' => $bookmarkedPlaylistIds,
+        ]);
+    }
+
+    public function getPlaylists($audio_id)
+    {
+        View::make('bookmarks.playlist_popup', [
+
         ]);
     }
 } 
