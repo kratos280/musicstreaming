@@ -62,3 +62,10 @@ code {
     background-color: #F7F7F7;
     border-bottom: 1px solid #DDD;
 }
+
+.col-md-4 .caption {
+    height: 130px !important;
+    padding: 9px;
+    color: #333333;
+    overflow: hidden;
+}
