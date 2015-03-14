@@ -7,16 +7,18 @@
 @stop
 
 @section('content')
-<h2>On Playlist {{{ $playlist->name }}}</h2>
-@foreach( $playlist_audios as $playlist_audio )
-<div class="col-md-4">
-    <div class="list-group">
-        <a href="/audios/" class="list-group-item">
-            {{{ $playlist_audio->audio->title }}}
-        </a>
-    </div>
-</div>
+<a class="btn btn-info" href="/playlists/create">Create New Playlist</a>
+<h2>Your Playlists</h2>
+@if( count($playlists) > 0 )
+<ul>
+@foreach($playlists as $playlist)
+    <li><a href="/playlists/{{ $playlist->playlist_id }}">{{{ $playlist->name }}}</a></li>
+    <span>{{{ $playlist->description }}}</span>
 @endforeach
+</ul>
+@else
+<p style="text-align: center; margin-top:100px">You dont have any playlist.</p>
+@endif
 @stop
 
 
