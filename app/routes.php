@@ -24,6 +24,8 @@ Route::group(
         Route::get('/{audio_id}', 'AudiosController@getItem');
     });
 
+Route::resource('playlists', 'PlaylistController');
+
 Route::group(
     [
         'prefix' => 'auth'
