@@ -15,9 +15,39 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+	public function getIndex()
 	{
-		return View::make('hello');
+        if( Auth::check() ) {
+            $user = Auth::user();
+        }
+        $client = new Desarrolla2\RSSClient\RSSClient();
+        $client->addFeeds(['https://itunes.apple.com/us/rss/topsongs/limit=10/xml']);
+        $topSongs = $client->fetch();
+        $client->addFeeds(['https://itunes.apple.com/us/rss/topalbums/limit=10/xml']);
+        $topAnbums = $client->fetch();
+        $client->addFeeds(['https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=10/rss.xml']);
+        $newReleases = $client->fetch();
+
+        return View::make('index', [
+            'topSongs' => $topSongs,
+            'topAnbums' => $topAnbums,
+            'newReleases' => $newReleases,
+        ]);
 	}
+
+    public function getPlayList()
+    {
+        $title = Input::get('title', '');
+
+        // Call to SoundClound API
+//        $soundCloudService = new \Soundcloud\Service(Config::get('app.soundcloud.client_id'), Config::get('app.soundcloud.client_secret'));
+//        $items = $soundCloudService->get('tracks', ['q' => $title, 'limit' => Config::get('parameters.searchLimit')]);
+        $soundCloudService = new \Soundcloud\Service(Config::get('app.soundcloud.client_id'), Config::get('app.soundcloud.client_secret'));
+        $items_json = $soundCloudService->get('tracks', ['q' => 'chac ai do se ve', 'limit' => Config::get('parameters.searchLimit')]);
+        $items = json_decode($items_json);
+        return View::make('list', [
+            'items' => $items,
+        ]);
+    }
 
 }

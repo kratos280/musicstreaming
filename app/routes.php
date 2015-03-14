@@ -11,11 +11,17 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get ('/', 'HomeController@getIndex' );
 
-Route::get('/search_result','SearchResultController@index');
-Route::get('/get_list_songs','ItuneRSSReaderController@index');
-Route::get('/play','PlayController@index');
+Route::get('/list','HomeController@getPlayList');
+
+Route::group(
+    [
+        'before' => '',
+        'prefix' => 'audios'
+    ]
+    , function() {
+
+        // DASHBOARD
+        Route::get('/{audio_id}', 'AudiosController@getItem');
+    });
