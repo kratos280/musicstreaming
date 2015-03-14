@@ -15,7 +15,7 @@
     <div class="col-md-4">
         <div class="list-group media-list">
             @foreach( $topSongs as $topSong )
-            <a href="/list?key={{ $topSong->getTitle() }}" class="list-group-item">
+            <a href="/list?key" class="list-group-item">
                 <div class="media-left">
                     <img alt="64x64" data-src="holder.js/64x64" class="media-object"
                          style="width: 64px; height: 64px;"
@@ -24,10 +24,10 @@
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading">
-                        {{{ $topSong->getTitle() }}}
+
                     </h4>
 
-                    <p> {{{ $topSong->getAuthor() }}}</p>
+                    <p> </p>
                 </div>
             </a>
             @endforeach
