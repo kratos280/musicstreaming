@@ -7,6 +7,6 @@
 @stop
 
 @section('content')
-
+{? var_dump($items) ?}
 @stop
 

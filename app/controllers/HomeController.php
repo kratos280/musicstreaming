@@ -37,17 +37,16 @@ class HomeController extends BaseController {
 
     public function getPlayList()
     {
-        $title = Input::get('title', '');
-
-        // Call to SoundClound API
-//        $soundCloudService = new \Soundcloud\Service(Config::get('app.soundcloud.client_id'), Config::get('app.soundcloud.client_secret'));
-//        $items = $soundCloudService->get('tracks', ['q' => $title, 'limit' => Config::get('parameters.searchLimit')]);
-        $soundCloudService = new \Soundcloud\Service(Config::get('app.soundcloud.client_id'), Config::get('app.soundcloud.client_secret'));
-        $items_json = $soundCloudService->get('tracks', ['q' => 'chac ai do se ve', 'limit' => Config::get('parameters.searchLimit')]);
-        $items = json_decode($items_json);
-        return View::make('list', [
-            'items' => $items,
-        ]);
+        $title = Input::get('title');
+        if( isset($title) ) {
+            // Call to SoundClound API
+            $soundCloudService = new \Soundcloud\Service(Config::get('app.soundcloud.client_id'), Config::get('app.soundcloud.client_secret'));
+            $items_json = $soundCloudService->get('tracks', ['q' => $title, 'limit' => Config::get('parameters.searchLimit')]);
+            $items = json_decode($items_json);
+            return View::make('list', [
+                'items' => $items,
+            ]);
+        }
     }
 
 }
