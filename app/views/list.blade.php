@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <div class="list-group media-list">
+    <div class="row list-group media-list">
         @foreach( $items as $item )
         <a href="/audios/{{{ $item->id }}}?key={{{ $key }}}" class="list-group-item">
             <div class="media-left">
