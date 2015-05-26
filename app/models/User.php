@@ -5,22 +5,28 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends BaseModel implements UserInterface {
 
-	use UserTrait, RemindableTrait;
+	use UserTrait, SoftDeletingTrait;
 
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'users';
+    protected $table = 'users';
+    protected $primaryKey = 'user_id';
+    public    $incrementing = false;
+    protected $fillable = ['*'];
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = array('password', 'remember_token');
+    public function playlists()
+    {
+        return $this->hasMany('Playlist', 'user_id', 'user_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('Comment', 'user_id', 'user_id');
+    }
 
 }

@@ -6,8 +6,11 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"barryvdh/laravel-ide-helper": "~1.11",
-        "barryvdh/laravel-migration-generator": "dev-master"
-	},
+        "barryvdh/laravel-migration-generator": "dev-master",
+        "ise/php-soundcloud": "3.*",
+        "desarrolla2/rss-client":  "dev-master",
+        "facebook/php-sdk-v4": "4.0.*"
+    },
 	"autoload": {
 		"classmap": [
 			"app/commands",

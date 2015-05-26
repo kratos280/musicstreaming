@@ -1,7 +1,5 @@
 /bootstrap/compiled.php
-/vendor
 composer.phar
-composer.lock
 .env.*.php
 .env.php
 .DS_Store
@@ -14,6 +12,7 @@ _ide_helper.php
 .idea
 app/config/local/database.php
 MusicStreaming.iml
+MusicStream.iml
 
 .vagrant
 .idea
@@ -21,3 +20,4 @@ Vagrantfile
 Berksfile
 Berksfile.lock
 composer.phar
+public/cache
