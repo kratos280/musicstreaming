@@ -21,3 +21,5 @@ Berksfile
 Berksfile.lock
 composer.phar
 public/cache
+vendor/composer/*
+vendor/autoload.php
