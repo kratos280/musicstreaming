@@ -58,5 +58,5 @@ Route::group([
 
     Route::post ('/ketqua', 'BoiVui@result');
 
-    Route::get ('/img', 'BoiVui@imageGenerator');
+    Route::get ('/gen_img', 'BoiVui@imageGenerator');
 });
