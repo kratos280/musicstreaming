@@ -103,6 +103,10 @@
     })
 </script>
 
+@section('script')
+
+@show
+
 </body>
 
 </html>

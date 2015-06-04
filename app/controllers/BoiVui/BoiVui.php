@@ -73,12 +73,13 @@ class BoiVui extends \BaseController {
 		return View::make('BoiVui.user_info_form');
 	}
 
-	public function result() {
+	public function submit() {
 		$param = str_replace(' ','-', trim(Input::get('name'))).'-'.Input::get('day').'-'.Input::get('month').'-'.Input::get('year').'-'.Input::get('sex');
-		return View::make('BoiVui.result', ['param' => $param]);
+		return Redirect::to('ketqua/'.$param);
 	}
 
 	public function imageGenerator() {
+		//yum install php55-gd
 		$img = @$this->imageCreateFromAny('http://luyengame.vn/img/'.Input::get('param').'.png');
 		Header( "Content-Type: image/jpeg");
 		imagejpeg($img);

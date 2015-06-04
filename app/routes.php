@@ -50,13 +50,17 @@ Route::group([
 });
 
 Route::group([
-    "domain" => "boivuimienphi.tk"
+    "domain" => "gameonlinevui.com"
 ], function() {
     Route::get ('/', 'BoiVui@index' );
 
     Route::get ('/congviec', 'BoiVui@userInfoForm');
 
-    Route::post ('/ketqua', 'BoiVui@result');
+    Route::post ('/submit', 'BoiVui@submit');
+
+    Route::get ('/ketqua/{param?}', function($param) {
+        return View::make('BoiVui.result', ['param' => $param]);
+    });
 
     Route::get ('/gen_img', 'BoiVui@imageGenerator');
 });

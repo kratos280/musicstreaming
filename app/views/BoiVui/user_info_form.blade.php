@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container col-lg-12 text-center">
-    {{ Form::open(array('url'=>'/ketqua', 'method'=>'POST', 'class' => 'form-horizontal')) }}
+    {{ Form::open(array('url'=>'/submit', 'method'=>'POST', 'class' => 'form-horizontal')) }}
         <div class="form-group">
             <label for="name" class="col-sm-2 control-label">Tên: </label>
             <div class="col-sm-3">
