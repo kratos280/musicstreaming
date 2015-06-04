@@ -9,7 +9,7 @@ class BoiVui extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('Boivui.index');
+		return View::make('BoiVui.index');
 	}
 
 	/**

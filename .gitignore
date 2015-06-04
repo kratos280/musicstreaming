@@ -19,6 +19,5 @@ MusicStream.iml
 Vagrantfile
 Berksfile
 Berksfile.lock
-composer.phar
 public/cache
 vendor/
