@@ -1,4 +1,18 @@
 @extends('BoiVui.boivui_template')
+
+@section('header')
+    <title>Bạn Phù Hợp Với Nghề Nào Nhất?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="Bạn Phù Hợp Với Nghề Nào Nhất?">
+    <meta property="og:description" content="Bạn Phù Hợp Với Nghề Nào Nhất?">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="520">
+    <meta property="og:image:height" content="280">
+    <meta charset="utf-8">
+@stop
+
 @section('content')
     <div class="col-lg-12 text-center">
         <img src="/gen_img?param={{$param}}">
