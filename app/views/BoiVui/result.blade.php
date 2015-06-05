@@ -6,7 +6,7 @@
     <meta property="og:title" content="Bạn Phù Hợp Với Nghề Nào Nhất?">
     <meta property="og:description" content="Bạn Phù Hợp Với Nghề Nào Nhất?">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="">
+    <meta property="og:image" content="/gen_img?param={{$param}}">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="520">
     <meta property="og:image:height" content="280">
@@ -18,12 +18,12 @@
         <img src="/gen_img?param={{$param}}">
     </div>
     <div
-            class="fb-like"
+            class="fb-like col-lg-12 text-center"
             data-share="true"
             data-width="450"
             data-show-faces="true">
     </div>
-
+    <div class="fb-comments col-lg-12 text-center" data-href="{{Request::url()}}" data-numposts="5" data-colorscheme="light"></div>
 @stop
 @section('script')
     <script>
@@ -39,8 +39,17 @@
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) {return;}
             js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
+            js.src = "//connect.facebook.net/vi_VN/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.3";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 @stop

@@ -81,6 +81,11 @@ class BoiVui extends \BaseController {
 	public function imageGenerator() {
 		//yum install php55-gd
 		$img = @$this->imageCreateFromAny('http://luyengame.vn/img/'.Input::get('param').'.png');
+
+		imagetruecolortopalette($img,false, 255);
+		$index = imagecolorclosest ( $img,  0,0,0 ); // GET BLACK COLOR
+		imagecolorset($img,$index,0,150,255); // SET COLOR TO BLUE
+
 		Header( "Content-Type: image/jpeg");
 		imagejpeg($img);
 		exit();

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-
+    <link rel="shortcut icon" href="{{{ asset('img/favicon.png') }}}">
     @section('header')
 
     @show
@@ -37,16 +37,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="index.html">Home</a>
-                </li>
-                <li>
-                    <a href="about.html">About</a>
-                </li>
-                <li>
-                    <a href="blog.html">Blog</a>
-                </li>
-                <li>
-                    <a href="contact.html">Contact</a>
+                    {{ link_to('/', "Trang chủ") }}
                 </li>
             </ul>
         </div>
@@ -80,23 +71,33 @@
                 <h1 class="brand-name">Bói Vui Miễn Phí</h1>
                 <hr class="tagline-divider">
 
-                <p>Copyright &copy; Your Website 2014</p>
+                <p>Copyright &copy; Bói Vui Miễn Phí</p>
             </div>
         </div>
     </div>
 </footer>
 
 <!-- jQuery -->
-<script src="js/jquery.js"></script>
-
+{{ HTML::script('js/jquery.js') }}
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+{{ HTML::script('js/bootstrap.min.js') }}
 
 <!-- Script to Activate the Carousel -->
 <script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
+</script>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-63796879-1', 'auto');
+    ga('send', 'pageview');
+
 </script>
 
 @section('script')
