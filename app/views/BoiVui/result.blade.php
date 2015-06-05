@@ -17,6 +17,7 @@
     <div class="col-lg-12 text-center">
         <img src="/gen_img?param={{$param}}">
     </div>
+    <p><a role="button" class="btn btn-primary" href="{{ URL::to('/congviec') }}">Chơi ngay</a></p>
     <div
             class="fb-like col-lg-12 text-center"
             data-share="true"
