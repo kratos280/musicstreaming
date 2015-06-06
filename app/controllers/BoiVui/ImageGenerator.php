@@ -89,7 +89,7 @@ class ImageGenerator extends \BaseController {
 
 		// Print Text On Image
 		imagettftext($jpg_image, 30, 0, 60, 100, $black, $font_path, 'Bạn ');
-		imagettftext($jpg_image, 30, 0, 130, 100, $blue, $font_path, $name);
+		imagettftext($jpg_image, 30, 0, 130, 100, $blue, $font_path, str_replace('-', ' ',$name));
 		imagettftext($jpg_image, 30, 0, 90, 150, $black, $font_path, 'Sẽ trở thành ');
 		imagettftext($jpg_image, 30, 0, 280, 150, $red, $font_path, $nghe1);
 		imagettftext($jpg_image, 30, 0, 90, 200, $black, $font_path, 'Nghề ');
