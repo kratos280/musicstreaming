@@ -88,12 +88,12 @@ class ImageGenerator extends \BaseController {
 		$font_path = 'fonts/UVNThuTu.TTF';
 
 		// Print Text On Image
-		imagettftext($jpg_image, 30, 0, 40, 120, $black, $font_path, 'Bạn ');
-		imagettftext($jpg_image, 30, 0, 110, 120, $blue, $font_path, $name);
-		imagettftext($jpg_image, 30, 0, 60, 170, $black, $font_path, 'Sẽ trở thành ');
-		imagettftext($jpg_image, 30, 0, 250, 170, $red, $font_path, $nghe1);
-		imagettftext($jpg_image, 30, 0, 60, 220, $black, $font_path, 'Nghề ');
-		imagettftext($jpg_image, 30, 0, 170, 220, $red, $font_path, $nghe2);
+		imagettftext($jpg_image, 30, 0, 60, 100, $black, $font_path, 'Bạn ');
+		imagettftext($jpg_image, 30, 0, 130, 100, $blue, $font_path, $name);
+		imagettftext($jpg_image, 30, 0, 90, 150, $black, $font_path, 'Sẽ trở thành ');
+		imagettftext($jpg_image, 30, 0, 280, 150, $red, $font_path, $nghe1);
+		imagettftext($jpg_image, 30, 0, 90, 200, $black, $font_path, 'Nghề ');
+		imagettftext($jpg_image, 30, 0, 200, 200, $red, $font_path, $nghe2);
 
 		// Send Image to Browser
 		imagejpeg($jpg_image);
