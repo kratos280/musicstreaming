@@ -8,9 +8,9 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="{{ URL::to('/gen_img/'.$path.'/'.$param.'/'.$name) }}" />
     <meta property="og:image:type" content="image/jpg" />
-    <meta property="og:image:width" content="520" />
-    <meta property="og:image:height" content="280" />
-    <meta charset="utf-8">
+    <meta property="og:image:width" content="550" />
+    <meta property="og:image:height" content="288" />
+    <meta charset="utf-8" />
 @stop
 
 @section('content')
