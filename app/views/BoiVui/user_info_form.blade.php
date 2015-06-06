@@ -40,8 +40,8 @@
                     <label class="col-sm-2 control-label">Giới tính: </label>
                     <div class="col-sm-1">
                         <select name="sex">
-                            <option value="m">Nam</option>
-                            <option value="f">Nữ</option>
+                            <option value="1">Nam</option>
+                            <option value="0">Nữ</option>
                         </select>
                     </div>
                 </div>

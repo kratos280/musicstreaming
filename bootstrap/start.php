@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('local.*', '*.local', '*.lan', '*' ),
+	'local' => array('vagrant-centos65.vagrantup.com'),
 
 ));
 

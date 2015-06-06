@@ -58,9 +58,9 @@ Route::group([
 
     Route::post ('/submit', 'BoiVui@submit');
 
-    Route::get ('/ketqua/{param?}', function($param) {
-        return View::make('BoiVui.result', ['param' => $param]);
+    Route::get ('/ketqua/{path}/{param}/{name}', function($path, $param, $name) {
+        return View::make('BoiVui.result', ['path' => $path, 'param' => $param, 'name' => $name]);
     });
 
-    Route::get ('/gen_img', 'BoiVui@imageGenerator');
+    Route::get ('/gen_img/{path}/{param}/{name}', 'ImageGenerator@generateImage');
 });

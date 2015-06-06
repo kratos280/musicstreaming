@@ -6,7 +6,7 @@
     <meta property="og:title" content="Bạn Phù Hợp Với Nghề Nào Nhất?">
     <meta property="og:description" content="Bạn Phù Hợp Với Nghề Nào Nhất?">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="/gen_img?param={{$param}}">
+    <meta property="og:image" content="{{ URL::to('/gen_img/'.$path.'/'.$param.'/'.$name) }}">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="520">
     <meta property="og:image:height" content="280">
@@ -15,7 +15,7 @@
 
 @section('content')
     <div class="col-lg-12 text-center">
-        <img src="/gen_img?param={{$param}}">
+        <img src="{{ URL::to('/gen_img/'.$path.'/'.$param.'/'.$name) }}">
     </div>
     <p><a role="button" class="btn btn-primary" href="{{ URL::to('/congviec') }}">Chơi ngay</a></p>
     <div

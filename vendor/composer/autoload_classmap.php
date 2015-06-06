@@ -25,6 +25,7 @@ return array(
     'DatabaseSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',
     'HomeController' => $baseDir . '/app/controllers/HomeController.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+    'ImageGenerator' => $baseDir . '/app/controllers/BoiVui/ImageGenerator.php',
     'Playlist' => $baseDir . '/app/models/Playlist.php',
     'PlaylistController' => $baseDir . '/app/controllers/PlaylistController.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',

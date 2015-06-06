@@ -74,49 +74,9 @@ class BoiVui extends \BaseController {
 	}
 
 	public function submit() {
-		$param = str_replace(' ','-', trim(Input::get('name'))).'-'.Input::get('day').'-'.Input::get('month').'-'.Input::get('year').'-'.Input::get('sex');
-		return Redirect::to('ketqua/'.$param);
-	}
-
-	public function imageGenerator() {
-		//yum install php55-gd
-		$img = @$this->imageCreateFromAny('http://luyengame.vn/img/'.Input::get('param').'.png');
-
-		imagetruecolortopalette($img,false, 255);
-		$index = imagecolorclosest ( $img,  0,0,0 ); // GET BLACK COLOR
-		imagecolorset($img,$index,0,150,255); // SET COLOR TO BLUE
-
-		Header( "Content-Type: image/jpeg");
-		imagejpeg($img);
-		exit();
-	}
-
-	function imageCreateFromAny($filepath) {
-		$type = exif_imagetype($filepath); // [] if you don't have exif you could use getImageSize()
-		$allowedTypes = array(
-			1,  // [] gif
-			2,  // [] jpg
-			3,  // [] png
-			6   // [] bmp
-		);
-		if (!in_array($type, $allowedTypes)) {
-			return false;
-		}
-		switch ($type) {
-			case 1 :
-				$im = imageCreateFromGif($filepath);
-				break;
-			case 2 :
-				$im = imageCreateFromJpeg($filepath);
-				break;
-			case 3 :
-				$im = imageCreateFromPng($filepath);
-				break;
-			case 6 :
-				$im = imageCreateFromBmp($filepath);
-				break;
-		}
-		return $im;
+		$name = Input::get('name');
+		$param = strlen($name)+Input::get('day')+Input::get('month')+Input::get('year')+Input::get('sex');
+		return Redirect::to('ketqua/congviec/'.$param.'/'.Input::get('name'));
 	}
 
 	/**
