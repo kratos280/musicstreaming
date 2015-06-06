@@ -4,7 +4,7 @@
     <title>Bạn Phù Hợp Với Nghề Nào Nhất?</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:title" content="Bạn Phù Hợp Với Nghề Nào Nhất?" />
-    <meta property="og:description" content="Bạn Phù Hợp Với Nghề Nào Nhất?" />
+    <meta property="og:description" content="Click để xem kết quả của bạn" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="{{ URL::to('/gen_img/'.$path.'/'.$param.'/'.$name) }}" />
     <meta property="og:image:type" content="image/jpg" />
