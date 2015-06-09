@@ -1,12 +1,12 @@
 @extends('BoiVui.boivui_template')
 
 @section('header')
-    <title>Bạn Phù Hợp Với Nghề Nào Nhất?</title>
+    <title>{{Games::$games[$type]['title']}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta property="og:title" content="Bạn Phù Hợp Với Nghề Nào Nhất?" />
+    <meta property="og:title" content="{{Games::$games[$type]['title']}}" />
     <meta property="og:description" content="Click để xem kết quả của bạn" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="{{ URL::to('/gen_img/'.$path.'/'.$param.'/'.str_replace(' ', '-',$name)) }}" />
+    <meta property="og:image" content="{{ URL::to('/gen_img/'.$type.'/'.$param) }}" />
     <meta property="og:image:type" content="image/jpg" />
     <meta property="og:image:width" content="550" />
     <meta property="og:image:height" content="288" />
@@ -15,9 +15,9 @@
 
 @section('content')
     <div class="col-lg-12 text-center">
-        <img src="{{ URL::to('/gen_img/'.$path.'/'.$param.'/'.str_replace(' ', '-',$name)) }}">
+        <img src="{{ URL::to('/gen_img/'.$type.'/'.$param) }}">
     </div>
-    <p><a role="button" class="btn btn-primary" href="{{ URL::to('/congviec') }}">Chơi ngay</a></p>
+    <p><a role="button" class="btn btn-primary" href="{{ URL::to('/'.$type) }}">Chơi ngay</a></p>
     <div
             class="fb-like col-lg-12 text-center"
             data-share="true"

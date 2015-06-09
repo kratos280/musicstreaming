@@ -69,14 +69,10 @@ class BoiVui extends \BaseController {
 		//
 	}
 
-	public function userInfoForm() {
-		return View::make('BoiVui.user_info_form');
-	}
-
 	public function submit() {
-		$name = Input::get('name');
-		$param = strlen($name)+Input::get('day')+Input::get('month')+Input::get('year')+Input::get('sex');
-		return Redirect::to('ketqua/congviec/'.$param.'/'.Input::get('name'));
+		$param = Input::get('day').'-'.Input::get('month').'-'.Input::get('year').'-'.Input::get('sex').'-'.Input::get('name');
+		$param = base64_encode($param);
+		return Redirect::to('ketqua/'.Input::get('type').'/'.$param);
 	}
 
 	/**
