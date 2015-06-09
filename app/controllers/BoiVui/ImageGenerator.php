@@ -160,7 +160,7 @@ giống như kiểu bạn là một người giống chúa vậy!';
 		imagettftext($jpg_image, 30, 0, 270, 50, $black, $font_path, 'Bạn:  ');
 		imagettftext($jpg_image, 30, 0, 360, 50, $blue, $font_path, $name);
 		imagettftext($jpg_image, 30, 0, 270, 100, $red, $font_path, 'Con Số May Mắn: Số '.$cal);
-		imagettftext($jpg_image, 20, 0, 220, 150, $blue, $font_path, $explain);
+		imagettftext($jpg_image, 18, 0, 220, 130, $blue, $font_path, $explain);
 
 		// Send Image to Browser
 		imagejpeg($jpg_image);
