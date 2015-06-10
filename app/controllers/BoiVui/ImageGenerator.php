@@ -14,7 +14,7 @@ class ImageGenerator extends \BaseController {
 
 
 	public function generateImage($type, $param) {
-		$param = explode('-', base64_decode($param));
+		$param = explode('-', base64_decode(str_replace('--', '/',$param)));
 		if (count($param) != 5) {
 			return null;
 		}
