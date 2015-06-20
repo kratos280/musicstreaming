@@ -28,7 +28,7 @@ class ImageGenerator extends \BaseController {
 
 	function generateMyNumber($day, $month, $year, $name) {
 		$cal = $day+$month+$year[0]+$year[1]+$year[2]+$year[3];
-		if (!in_array($cal, array(1,2,3,4,5,6,7,8,9,11,22))) {
+		while (!in_array($cal, array(1,2,3,4,5,6,7,8,9,11,22))) {
 			$cal = floor($cal/10)+$cal%10;
 		}
 		switch ($cal) {
