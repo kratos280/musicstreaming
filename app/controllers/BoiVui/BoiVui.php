@@ -71,7 +71,7 @@ class BoiVui extends \BaseController {
 
 	public function submit() {
 		$param = Input::get('day').'-'.Input::get('month').'-'.Input::get('year').'-'.Input::get('sex').'-'.Input::get('name');
-		$param = base64_encode($param);
+		$param = str_replace('/', '--', base64_encode($param));
 		return Redirect::to('ketqua/'.Input::get('type').'/'.$param);
 	}
 
