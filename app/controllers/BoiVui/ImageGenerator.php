@@ -146,6 +146,7 @@ giống như kiểu bạn là một người giống chúa vậy!';
 		header('Content-type: image/jpeg');
 
 		// Create Image From Existing File
+		//yum install php55-gd
 		$jpg_image = $this->imageCreateFromAny('img/mynumber-khung.jpg');
 
 		// Allocate A Color For The Text
