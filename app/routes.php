@@ -17,6 +17,8 @@ Route::group([
 
     Route::get('/list','HomeController@getPlayList');
 
+    Route::get('play', 'PlayController@play');
+
     Route::group(
         [
             'before' => '',

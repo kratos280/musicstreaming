@@ -54,7 +54,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => '54.64.166.247',
+			'host'      => 'localhost',
 			'database'  => 'db_musicstreaming',
 			'username'  => 'root',
 			'password'  => 'changeme',

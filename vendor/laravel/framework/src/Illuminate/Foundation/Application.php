@@ -747,7 +747,7 @@ class Application extends Container implements HttpKernelInterface, TerminableIn
 		catch (\Exception $e)
 		{
 			if ( ! $catch || $this->runningUnitTests()) throw $e;
-
+			dd($e);
 			return $this['exception']->handleException($e);
 		}
 	}

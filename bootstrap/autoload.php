@@ -15,7 +15,7 @@ define('LARAVEL_START', microtime(true));
 */
 
 require __DIR__.'/../vendor/autoload.php';
-require '../app/controllers/BoiVui/Games.php';
+require __DIR__.'/../app/controllers/BoiVui/Games.php';
 
 /*
 |--------------------------------------------------------------------------
