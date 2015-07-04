@@ -22,20 +22,6 @@ class PlayController extends BaseController{
 
         } else {
             //have name and artist
-            $playlist = Session::get('playlist');
-            if ($playlist) {
-                foreach ($playlist as $index => $info) {
-                    if ($info['name'] == $params['name'] && $info['artist'] == $params['artist']) {
-                        Session::put('current_song_index', $index);
-                        if ($index < (count($playlist) - 1)) {
-                            Session::put('next_song', base64_encode(json_encode(array('name' => $playlist[$index + 1]['name'], 'artist' => $playlist[$index + 1]['artist']))));
-                        } else {
-                            Session::put('next_song', null);
-                        }
-                        break;
-                    }
-                }
-            }
             $search_response = $youtube->search->listSearch("snippet", array('order' => 'relevance', 'type' => 'video', 'regionCode' => 'JP', 'maxResults' => 50, 'q' => $params['name'].' '.$params['artist']));
             $items = $search_response->getItems();
 
@@ -54,6 +40,33 @@ class PlayController extends BaseController{
             $video_info['video_id'] = $video_result->video_id;
             $video_info['video_title'] = $video_result->video_title;
             $video_info['video_img'] = $video_result->img_url;
+        }
+
+        $playlist = Session::get('playlist');
+        if ($playlist) {
+            foreach ($playlist as $index => $info) {
+                if ($info['video_id']) {
+                    if ($info['video_id'] == $params['videoId']) {
+                        Session::put('current_song_index', $index);
+                        if ($index < (count($playlist) - 1)) {
+                            Session::put('next_song', base64_encode(json_encode(array('videoId' => $playlist[$index + 1]['video_id'], 'title' => $playlist[$index + 1]['title']))));
+                        } else {
+                            Session::put('next_song', null);
+                        }
+                        break;
+                    }
+                } else {
+                    if ($info['name'] == $params['name'] && $info['artist'] == $params['artist']) {
+                        Session::put('current_song_index', $index);
+                        if ($index < (count($playlist) - 1)) {
+                            Session::put('next_song', base64_encode(json_encode(array('name' => $playlist[$index + 1]['name'], 'artist' => $playlist[$index + 1]['artist']))));
+                        } else {
+                            Session::put('next_song', null);
+                        }
+                        break;
+                    }
+                }
+            }
         }
 
         return View::make('Music.play', ['items' => $items, 'video_info' => $video_info]);

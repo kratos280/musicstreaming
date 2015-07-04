@@ -4,33 +4,34 @@
     <div class="col-1">
         <h2>トップ100</h2>
         <div class="p2">
-            <?php $playlist = array() ?>
             @foreach( $topSongs as $key => $topSong )
-                <?php $playlist[] = array('name' => $topSong["im"]["name"], 'artist' => $topSong["im"]["artist"], 'img' => $topSong["im"]["image"]) ?>
                 <a href="/play?params={{{base64_encode(json_encode(array('name' => $topSong["im"]["name"], 'artist' => $topSong["im"]["artist"])))}}}" rel="prettyPhoto">
                     <img class="p1" src="{{{$topSong["im"]["image"]}}}" alt="">
                 </a>
                 <div class="alc"><a href="/play?params={{{base64_encode(json_encode(array('name' => $topSong["im"]["name"], 'artist' => $topSong["im"]["artist"])))}}}">{{{ $topSong["im"]["name"] . ' - ' . $topSong["im"]["artist"] }}}</a></div>
             @endforeach
-            <?php Session::put('playlist', $playlist) ?>
         </div>
     </div>
     <div class="col-2 col-2-scroll">
         <h2>{{$title}}</h2>
         @if($items)
+            <?php $playlist = array() ?>
             @foreach($items as $item)
+                <?php $playlist[] = array('video_id' => $item->getSnippet()->getResourceId()->videoId, 'title' => $item->getSnippet()->title, 'img' => $item->getSnippet()->getThumbnails()->medium->url) ?>
                 <div class="col-sm-6 col-md-4" style="width: 50%">
                     <div class="thumbnail" style="background-color: #1d1d1d">
                         <a href="/play?params={{base64_encode(json_encode(array('videoId' => $item->getSnippet()->getResourceId()->videoId, 'title' => $item->getSnippet()->title)))}}">
                             <img alt="100%x200" style="min-height: 155px; width: 100%; display: block;" src="{{$item->getSnippet()->getThumbnails()->medium->url}}">
                             <div class="caption">
-                                <p style="font-size: medium">{{{ $topAlbum["im"]["name"]}}}<br>{{$item->getSnippet()->title}}</p>
+                                <p style="font-size: medium">{{$item->getSnippet()->title}}</p>
                             </div>
                         </a>
                     </div>
                 </div>
 
             @endforeach
+
+                <?php Session::put('playlist', $playlist) ?>
         @endif
     </div>
     <div class="col-3">
