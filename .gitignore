@@ -20,4 +20,3 @@ Vagrantfile
 Berksfile
 Berksfile.lock
 public/cache
-vendor/
