@@ -67,35 +67,15 @@
 		@endforeach
 	</div>
 	<div class="col-3">
-		<h2>Latest Tweets</h2>
-		<div class="und">
-		<p>At vero eos et accusamus et iusto odio dignissimos ducimus blanditiis.<br>
-			<a href="#">1 hour ago</a></p>
-		<p>Praesentium voluptatumdel enititque corrupti quos.<br>
-			<a href="#">3 hours ago</a></p>
-		<p>dolores et quas molestias excepturi sint occaecati cupiditate.<br>
-			<a href="#">7 hours ago</a></p>
-		<p>Non provident, similiqusunt in culpa qui officia.<br>
-			<a href="#">12 hours ago</a></p>
-		<p>At vero eos et accusamus et iusto odio dignissimos ducimus blanditiis.<br>
-			<a href="#">16 hours ago</a></p>
-		</div>
-		<h2>Newsletter</h2>
-		<form action="" id="subscribe">
-		<fieldset>
-			<label>
-			<input type="text">
-			</label>
-			<input type="submit" value="">
-		</fieldset>
-		</form>
-		<h2>Find Me</h2>
-		<ul class="soc-ico">
-		<li><a href="#"><img src="img/theme/facebook.png" alt=""></a></li>
-		<li><a href="#"><img src="img/theme/twitter.png" alt=""></a></li>
-		<li><a href="#"><img src="img/theme/myspace.png" alt=""></a></li>
-		<li><a href="#"><img src="img/theme/linkedin.png" alt=""></a></li>
-		</ul>
+		<!-- i-mobile for PC client script -->
+		<script type="text/javascript">
+			imobile_pid = "39969";
+			imobile_asid = "518265";
+			imobile_width = 160;
+			imobile_height = 600;
+		</script>
+		<script type="text/javascript" src="http://spdeliver.i-mobile.co.jp/script/ads.js?20101001"></script>
+
 	</div>
 @stop
 

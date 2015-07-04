@@ -15,26 +15,35 @@
             <?php Session::put('playlist', $playlist) ?>
         </div>
     </div>
-    <div class="col-2">
-        <h2>Galleries</h2>
-        <div class="img-box fl"> <a href="images/01.jpg" rel="prettyPhoto[pp_gal]"><img src="images/gallery5.jpg" alt=""><br>
-                Gallery 1</a> </div>
-        <div class="img-box fl lst"> <a href="images/02.jpg" rel="prettyPhoto[pp_gal]"><img src="images/gallery2.jpg" alt=""><br>
-                Gallery 2</a> </div>
-        <div class="img-box fl"> <a href="images/03.jpg" rel="prettyPhoto[pp_gal]"><img src="images/gallery4.jpg" alt=""><br>
-                Gallery 3</a> </div>
-        <div class="img-box fl lst"> <a href="images/04.jpg" rel="prettyPhoto[pp_gal]"><img src="images/gallery1.jpg" alt=""><br>
-                Gallery 4</a> </div>
-        <div class="img-box fl"> <a href="images/05.jpg" rel="prettyPhoto[pp_gal]"><img src="images/gallery3.jpg" alt=""><br>
-                Gallery 5</a> </div>
-        <div class="img-box fl lst"> <a href="images/06.jpg" rel="prettyPhoto[pp_gal]"><img src="images/gallery6.jpg" alt=""><br>
-                Gallery 6</a> </div>
-        <div class="img-box fl"> <a href="images/07.jpg" rel="prettyPhoto[pp_gal]"><img src="images/gallery8.jpg" alt=""><br>
-                Gallery 7</a> </div>
-        <div class="img-box fl lst"> <a href="images/08.jpg" rel="prettyPhoto[pp_gal]"><img src="images/gallery7.jpg" alt=""><br>
-                Gallery 8</a> </div>
+    <div class="col-2 col-2-scroll">
+        <h2>{{$title}}</h2>
+        @if($items)
+            @foreach($items as $item)
+                <div class="col-sm-6 col-md-4" style="width: 50%">
+                    <div class="thumbnail" style="background-color: #1d1d1d">
+                        <a href="/play?params={{base64_encode(json_encode(array('videoId' => $item->getSnippet()->getResourceId()->videoId, 'title' => $item->getSnippet()->title)))}}">
+                            <img alt="100%x200" style="min-height: 155px; width: 100%; display: block;" src="{{$item->getSnippet()->getThumbnails()->medium->url}}">
+                            <div class="caption">
+                                <p style="font-size: medium">{{{ $topAlbum["im"]["name"]}}}<br>{{$item->getSnippet()->title}}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            @endforeach
+        @endif
     </div>
-    <div class="col-3"></div>
+    <div class="col-3">
+        <!-- i-mobile for PC client script -->
+        <script type="text/javascript">
+            imobile_pid = "39969";
+            imobile_asid = "518265";
+            imobile_width = 160;
+            imobile_height = 600;
+        </script>
+        <script type="text/javascript" src="http://spdeliver.i-mobile.co.jp/script/ads.js?20101001"></script>
+
+    </div>
 @stop
 
 @section('scriptsFooter')

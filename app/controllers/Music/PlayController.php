@@ -18,6 +18,7 @@ class PlayController extends BaseController{
 
             $video_info['video_id'] = $video->getId();
             $video_info['video_title'] = $video->getSnippet()->title;
+            $video_info['video_img'] = $video->getSnippet()->getThumbnails()->medium->url;
 
         } else {
             //have name and artist
@@ -46,11 +47,13 @@ class PlayController extends BaseController{
                 $video_result->artist = $params['artist'];
                 $video_result->video_id = $play_video->getId()->videoId;
                 $video_result->video_title = $play_video->getSnippet()->title;
+                $video_result->img_url = $play_video->getSnippet()->getThumbnails()->medium->url;
                 $video_result->save();
             }
 
             $video_info['video_id'] = $video_result->video_id;
-            $video_info['video_title'] = $video_info->video_title;
+            $video_info['video_title'] = $video_result->video_title;
+            $video_info['video_img'] = $video_result->img_url;
         }
 
         return View::make('Music.play', ['items' => $items, 'video_info' => $video_info]);

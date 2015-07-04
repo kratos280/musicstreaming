@@ -6,7 +6,12 @@
 }
 
 .col-1 .p2 {
-    max-height: 1215px;
+    max-height: 1300px;
+    overflow: auto;
+}
+
+.col-2-scroll {
+    max-height: 1400px;
     overflow: auto;
 }
 

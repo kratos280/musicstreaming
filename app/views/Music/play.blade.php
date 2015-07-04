@@ -1,5 +1,18 @@
 @extends('layouts.Music.layout',['page_id'=>'page2'])
 
+@section('og')
+    <title>{{$video_info['video_title']}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="{{$video_info['video_title']}}" />
+    <meta property="og:description" content="{{$video_info['video_title']}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="{{$video_info['video_img']}}" />
+    <meta property="og:image:type" content="image/jpg" />
+    <meta property="og:image:width" content="550" />
+    <meta property="og:image:height" content="288" />
+    <meta charset="utf-8" />
+@stop
+
 @section('content')
     <div class="col-md-8">
         <div id="player" data-vid="{{$video_info['video_id']}}" data-nvid = "{{Session::get('next_song')}}"></div>
@@ -9,6 +22,7 @@
                 <img src="" width="60px" id="bookmark-btn">
             </div>
 
+            <div id="fb-root"></div>
             <div
                     class="fb-like col-lg-12 text-center"
                     data-share="true"
