@@ -11,11 +11,11 @@
 |
 */
 Route::group([
-    "domain" => "musicfreeonline.tk"
+    "domain" => "musiconlinetop1.com"
 ], function() {
     Route::get ('/', 'HomeController@getIndex' );
 
-    Route::get('/list','HomeController@getPlayList');
+    Route::get('/playlist','PlaylistController@playlistView');
 
     Route::get('play', 'PlayController@play');
 

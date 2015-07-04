@@ -41,7 +41,7 @@ abstract class AbstractSQLAnywhereDriver implements Driver, ExceptionConverterDr
     /**
      * {@inheritdoc}
      *
-     * @link http://dcx.sybase.com/index.html#sa160/en/saerrors/sqlerror.html
+     * @link http://dcx.sybase.com/index.blade.php#sa160/en/saerrors/sqlerror.html
      */
     public function convertException($message, DriverException $exception)
     {

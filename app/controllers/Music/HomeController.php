@@ -25,12 +25,10 @@ class HomeController extends BaseController {
 
         $topSongs = fetch_rss("https://itunes.apple.com/jp/rss/topsongs/limit=100/xml")->items;
         $topAlbums = fetch_rss("https://itunes.apple.com/jp/rss/topalbums/limit=6/xml")->items;
-        $newReleases = fetch_rss("https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/limit=30/rss.xml")->items;
 
         return View::make('Music.index', [
             'topSongs' => $topSongs,
-            'topAlbums' => $topAlbums,
-            'newReleases' => $newReleases,
+            'topAlbums' => $topAlbums
         ]);
 	}
 }

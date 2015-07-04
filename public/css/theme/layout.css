@@ -1,0 +1,60 @@
+/* index.html */
+.col-1{
+    width:175px;
+    margin-right:44px;
+    margin-left:50px;
+}
+
+.col-1 .p2 {
+    max-height: 1215px;
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+    color: #1d1d1d;
+}
+
+.col-md-8 .extend {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #ffffff;
+}
+
+.fb_iframe_widget {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+   -moz-border-radius-bottomright: 10px; !important;
+    background-color: #ffffff;
+}
+
+.col-md-4 .caption {
+    height: 80px !important;
+    padding: 9px;
+    color: #2d9505;
+    overflow: hidden;
+}
+
+.list-group {
+    margin-bottom: 20px;
+    padding-left: 0;
+    max-height: 500px;
+    overflow: scroll;
+}
+
+.media-left p {
+    margin-top: 20px;
+}
+
+.col-2{width:586px;margin-right:44px}
+.col-3{width:160px}
+.col-1{font-size:14px}
+#page2 .col-1{margin-right:84px}
+#page2 .col-2{width:506px;margin-right:84px}
+#page3 .col-1{margin-right:84px}
+#page3 .col-2{width:506px;margin-right:84px}
+#page4 .col-1{margin-right:84px}
+#page4 .col-2{width:506px;margin-right:84px}
+#page5 .col-1{margin-right:44px}
+#page5 .col-2{width:586px;margin-right:44px}
+#page6 .col-1{margin-right:84px}
+#page6 .col-2{width:506px;margin-right:84px}

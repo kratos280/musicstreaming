@@ -8,29 +8,51 @@ class PlayController extends BaseController{
         $google_client = new Google_Client();
         $google_client->setDeveloperKey("AIzaSyD1nDPXUdeHURY3G3uVPVBRRLc99jyM84w");
         $youtube = new Google_Service_YouTube($google_client);
-
+        $video_info = array();
         if (array_key_exists('videoId', $params)) {
             //have video id and title
             $video = $youtube->videos->listVideos('snippet', array('id' => $params['videoId']))->getItems()[0];
+
             $search_response = $youtube->search->listSearch("snippet", array('order' => 'relevance', 'type' => 'video', 'regionCode' => 'JP', 'maxResults' => 49, 'q' => $params['title']));
             $items = $search_response->getItems();
-            array_unshift($items, $video);
+
+            $video_info['video_id'] = $video->getId();
+            $video_info['video_title'] = $video->getSnippet()->title;
+
         } else {
             //have name and artist
-            $top_songs = Session::get('top_songs');
-            foreach ($top_songs as $index => $info) {
-                if ($info['name'] == $params['name'] && $info['artist'] == $params['artist']) {
-                    if ($index < (count($top_songs) - 1)) {
-                        Session::put('next_song', base64_encode(json_encode(array('name' => $top_songs[$index+1]['name'], 'artist' => $top_songs[$index+1]['artist']))));
-                    } else {
-                        Session::put('next_song', null);
+            $playlist = Session::get('playlist');
+            if ($playlist) {
+                foreach ($playlist as $index => $info) {
+                    if ($info['name'] == $params['name'] && $info['artist'] == $params['artist']) {
+                        Session::put('current_song_index', $index);
+                        if ($index < (count($playlist) - 1)) {
+                            Session::put('next_song', base64_encode(json_encode(array('name' => $playlist[$index + 1]['name'], 'artist' => $playlist[$index + 1]['artist']))));
+                        } else {
+                            Session::put('next_song', null);
+                        }
+                        break;
                     }
                 }
             }
             $search_response = $youtube->search->listSearch("snippet", array('order' => 'relevance', 'type' => 'video', 'regionCode' => 'JP', 'maxResults' => 50, 'q' => $params['name'].' '.$params['artist']));
             $items = $search_response->getItems();
+
+            $video_result = SearchVideosCaches::where(array('name' => $params['name'], 'artist' => $params['artist']))->first();
+            if (!$video_result) {
+                $play_video = array_shift($items);
+                $video_result = new SearchVideosCaches();
+                $video_result->name = $params['name'];
+                $video_result->artist = $params['artist'];
+                $video_result->video_id = $play_video->getId()->videoId;
+                $video_result->video_title = $play_video->getSnippet()->title;
+                $video_result->save();
+            }
+
+            $video_info['video_id'] = $video_result->video_id;
+            $video_info['video_title'] = $video_info->video_title;
         }
 
-        return View::make('Music.play', ['items' => $items]);
+        return View::make('Music.play', ['items' => $items, 'video_info' => $video_info]);
     }
 }

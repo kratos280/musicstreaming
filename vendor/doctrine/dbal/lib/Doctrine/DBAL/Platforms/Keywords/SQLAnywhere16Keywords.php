@@ -37,7 +37,7 @@ class SQLAnywhere16Keywords extends SQLAnywhere12Keywords
     /**
      * {@inheritdoc}
      *
-     * @link http://dcx.sybase.com/index.html#sa160/en/dbreference/alhakeywords.html
+     * @link http://dcx.sybase.com/index.blade.php#sa160/en/dbreference/alhakeywords.html
      */
     protected function getKeywords()
     {
