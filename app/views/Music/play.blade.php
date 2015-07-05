@@ -102,13 +102,3 @@
     {{ HTML::script('js/Music/play.js') }}
     {{ HTML::script('js/Music/index.js') }}
 @stop
-
-
-@section('documentReady')
-    $('[rel=prettyPhoto]').each(function(){
-    var th=$(this),pb
-    th.append(pb=$('<span class="playbutt" style="width: 50%"></span>').css({opacity:.9}))
-    })
-@stop
-
-

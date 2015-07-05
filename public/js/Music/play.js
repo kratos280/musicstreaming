@@ -58,3 +58,7 @@ window.fbAsyncInit = function() {
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
+$('[rel=prettyPhoto]').each(function(){
+    var th=$(this),pb
+    th.append(pb=$('<span class="playbutt" style="width: 50%"></span>').css({opacity:.9}))
+})
