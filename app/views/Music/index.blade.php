@@ -47,6 +47,7 @@
 		<select class="form-control" id="langSelect" style="  width: 30%;margin: auto;margin-bottom: 20px;">
 			<option <?php if($lang == 'jp') echo 'selected' ?> value="jp">Japan Music</option>
 			<option <?php if($lang == 'en') echo 'selected' ?> value="en">English Music</option>
+			<option <?php if($lang == 'vn') echo 'selected' ?> value="vn">Viet Nam Music</option>
 		</select>
 		<!-- audio player begin -->
 		<div id="jplayer"></div>

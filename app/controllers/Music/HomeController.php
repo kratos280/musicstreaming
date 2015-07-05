@@ -23,7 +23,7 @@ class HomeController extends BaseController {
             $user = Auth::user();
         }
 		$lang = Input::get('lang');
-		if (!$lang || !in_array($lang, array('en', 'jp'))) {
+		if (!$lang || !in_array($lang, array('en', 'jp', 'vn'))) {
 			$lang = 'en';
 		}
         $topSongs = fetch_rss("https://itunes.apple.com/".$lang."/rss/topsongs/limit=100/xml")->items;
