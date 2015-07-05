@@ -39,11 +39,15 @@ class PlayController extends BaseController{
                 } else {
                     Session::put('playlist', null);
                 }
-            }
+                $video_info['video_id'] = $play_video->getId()->videoId;
+                $video_info['video_title'] = $play_video->getSnippet()->title;
+                $video_info['video_img'] = $play_video->getSnippet()->getThumbnails()->medium->url;
 
-            $video_info['video_id'] = $play_video->getId()->videoId;
-            $video_info['video_title'] = $play_video->getSnippet()->title;
-            $video_info['video_img'] = $play_video->getSnippet()->getThumbnails()->medium->url;
+            } else {
+                $video_info['video_id'] = $video_result->video_id;
+                $video_info['video_title'] = $video_result->video_title;
+                $video_info['video_img'] = $video_result->img_url;
+            }
         }
 
         $playlist = Session::get('playlist');
