@@ -5,6 +5,10 @@
     margin-left:50px;
 }
 
+.col-1, .col-2, .col-3, .col-md-4 {
+    text-align: center;
+}
+
 .col-1 .p2 {
     max-height: 1300px;
     overflow: auto;

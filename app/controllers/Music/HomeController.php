@@ -22,13 +22,17 @@ class HomeController extends BaseController {
         if( Auth::check() ) {
             $user = Auth::user();
         }
-
-        $topSongs = fetch_rss("https://itunes.apple.com/jp/rss/topsongs/limit=100/xml")->items;
-        $topAlbums = fetch_rss("https://itunes.apple.com/jp/rss/topalbums/limit=6/xml")->items;
+		$lang = Input::get('lang');
+		if (!$lang || !in_array($lang, array('en', 'jp'))) {
+			$lang = 'en';
+		}
+        $topSongs = fetch_rss("https://itunes.apple.com/".$lang."/rss/topsongs/limit=100/xml")->items;
+        $topAlbums = fetch_rss("https://itunes.apple.com/".$lang."/rss/topalbums/limit=6/xml")->items;
 
         return View::make('Music.index', [
             'topSongs' => $topSongs,
-            'topAlbums' => $topAlbums
+            'topAlbums' => $topAlbums,
+			'lang' => $lang
         ]);
 	}
 }

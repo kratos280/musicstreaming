@@ -19,4 +19,8 @@ $(window).load(function(){
                 .animate({opacity:.7})
         })
     })
-})
+
+    $('#langSelect').change(function() {
+        window.location.href = '?lang='+$(this).val();
+    })
+});

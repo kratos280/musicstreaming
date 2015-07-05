@@ -1,5 +1,10 @@
 <?php
 
+$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+if (!$lang || !in_array($lang, array('ja', 'en'))) {
+	$lang = "en";
+}
+
 return array(
 
 	/*
@@ -52,7 +57,7 @@ return array(
 	|
 	*/
 
-	'locale' => 'en',
+	'locale' => $lang,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -65,7 +70,7 @@ return array(
 	|
 	*/
 
-	'fallback_locale' => 'en',
+	'fallback_locale' => $lang,
 
 	/*
 	|--------------------------------------------------------------------------

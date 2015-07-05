@@ -42,7 +42,7 @@
     </div>
     <div class="col-md-4">
         @if($playlist = Session::get('playlist'))
-        <h2>プレイリスト</h2>
+        <h2>{{trans('messages.Playlist')}}</h2>
         <div class="list-group media-list" style="height: 50%">
             @foreach($playlist as $index => $item)
                 @if($item['video_id'])
@@ -71,7 +71,7 @@
             @endforeach
         </div>
         @endif
-        <h2>関連ビデオ</h2>
+        <h2>{{trans('messages.OtherVideos')}}</h2>
         <div class="list-group media-list" style="height: 50%">
             @foreach($items as $item)
                 <a href="/play?params={{base64_encode(json_encode(array('title' => $item->getSnippet()->title, 'videoId' => $item->getId()->videoId)))}}" class="list-group-item">

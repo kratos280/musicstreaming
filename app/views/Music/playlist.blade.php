@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="col-1">
-        <h2>トップ100</h2>
+        <h2>{{trans('messages.Top100')}}</h2>
         <div class="p2">
             @foreach( $topSongs as $key => $topSong )
                 <a href="/play?params={{{base64_encode(json_encode(array('name' => $topSong["im"]["name"], 'artist' => $topSong["im"]["artist"])))}}}" rel="prettyPhoto">

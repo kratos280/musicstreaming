@@ -21,6 +21,7 @@
     {{ HTML::script('js/Music/theme/gSlider.js') }}
     {{ HTML::script('js/Music/theme/jquery.easing.1.3.js') }}
     {{ HTML::script('js/Music/theme/jquery.prettyPhoto.js') }}
+    @yield('extendScript')
     <!--[if lt IE 7]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;'> <a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://www.theie6countdown.com/img/theme/upgrade.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /></a></div> <![endif]-->
     <!--[if lt IE 9]><script src="js/html5.js" type="text/javascript"></script><![endif]-->
     <!--[if IE]><link href="css/ie_style.css" rel="stylesheet" type="text/css" /><![endif]-->
@@ -34,9 +35,9 @@
             </ul>
         </nav>
             <form method="POST" action="/search" class="input-group header-slider">
-                <input type="text" autofocus="autofocus" autocomplete="off" placeholder="キーワード" name="search" style="height: 50px" class="form-control">
+                <input type="text" autofocus="autofocus" autocomplete="off" placeholder="{{trans('messages.Keyword')}}" name="search" style="height: 50px" class="form-control">
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit" style="height: 50px;">検索</button>
+                    <button class="btn btn-default" type="submit" style="height: 50px;">{{trans('messages.Search')}}</button>
                 </span>
             </form>
     </header>

@@ -1,5 +1,18 @@
 @extends('layouts.Music.layout', ['page_id'=>'page1'])
 
+@section('og')
+	<title>Music Online Top 1</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta property="og:title" content="Music Online Top 1" />
+	<meta property="og:description" content="Music Online Top 1" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="{{str_replace("170x170-75", "550x550-150", $topSongs[0]["im"]["image"])}}" />
+	<meta property="og:image:type" content="image/jpg" />
+	<meta property="og:image:width" content="550" />
+	<meta property="og:image:height" content="288" />
+	<meta charset="utf-8" />
+@stop
+
 @section('banner')
   <div class="tumbvr">
 	<div class="tumbvr-mask"></div>
@@ -15,8 +28,9 @@
 @stop
 
 @section('content')
+
 	<div class="col-1">
-		<h2>トップ100</h2>
+		<h2>{{trans('messages.Top100')}}</h2>
 		<div class="p2">
 			<?php $playlist = array() ?>
 			@foreach( $topSongs as $key => $topSong )
@@ -30,6 +44,10 @@
 		</div>
 	</div>
 	<div class="col-2">
+		<select class="form-control" id="langSelect" style="  width: 30%;margin: auto;margin-bottom: 20px;">
+			<option <?php if($lang == 'jp') echo 'selected' ?> value="jp">Japan Music</option>
+			<option <?php if($lang == 'en') echo 'selected' ?> value="en">English Music</option>
+		</select>
 		<!-- audio player begin -->
 		<div id="jplayer"></div>
 		<div class="jp-audio">
@@ -51,7 +69,7 @@
 		</div>
 		</div>
 		<!-- audio player end -->
-		<h2 class="pl">トップアルバム</h2>
+		<h2 class="pl">{{trans('messages.TopAlbum')}}</h2>
 		@foreach($topAlbums as $topAlbum)
 			<div class="col-sm-6 col-md-4" style="width: 50%">
 				<div class="thumbnail" style="background-color: #1d1d1d">
@@ -59,7 +77,7 @@
 					<div class="caption">
 						<p style="font-size: medium">{{{ $topAlbum["im"]["name"]}}}<br>{{$topAlbum["im"]["artist"] }}</p>
 					</div>
-					<p><a role="button" class="btn btn-primary" href="/playlist?params={{base64_encode(json_encode(array('name' => $topAlbum["im"]["name"], 'artist' => $topAlbum["im"]["artist"])))}}">見る</a></p>
+					<p><a role="button" class="btn btn-primary" href="/playlist?params={{base64_encode(json_encode(array('name' => $topAlbum["im"]["name"], 'artist' => $topAlbum["im"]["artist"])))}}">{{trans('messages.View')}}</a></p>
 				</div>
 			</div>
 		@endforeach
