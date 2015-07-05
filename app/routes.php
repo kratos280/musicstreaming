@@ -15,6 +15,12 @@ Route::group([
 ], function() {
     Route::get ('/', 'HomeController@getIndex' );
 
+    Route::post('search', function() {
+        $keyword = Input::get('search');
+
+        return Redirect::to('/play?params='.base64_encode(json_encode(array('name' => $keyword))));
+    });
+
     Route::get('/playlist','PlaylistController@playlistView');
 
     Route::get('play', 'PlayController@play');

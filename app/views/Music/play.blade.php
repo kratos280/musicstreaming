@@ -16,26 +16,24 @@
 @section('content')
     <div class="col-md-8">
         <div id="player" data-vid="{{$video_info['video_id']}}" data-nvid = "{{Session::get('next_song')}}"></div>
-        <div class="extend">
-            <div class="offset2 span8">
-                <h3>{{$video_info['video_title']}}</h3>
-                <img src="" width="60px" id="bookmark-btn">
-            </div>
-
+        <div class="col-lg-12 text-center" style="font-size: 24px; margin-bottom: 20px">
+            <h3>{{$video_info['video_title']}}</h3>
+        </div>
+        <div class="extend col-lg-12 text-center">
             <div id="fb-root"></div>
             <div
                     class="fb-like col-lg-12 text-center"
                     data-share="true"
                     data-width="450"
-                    data-show-faces="true">
+                    data-show-faces="true" style="margin-top: 20px">
             </div>
 
             <!-- i-mobile for PC client script -->
             <script type="text/javascript">
                 imobile_pid = "39969";
-                imobile_asid = "516057";
-                imobile_width = 728;
-                imobile_height = 90;
+                imobile_asid = "516056";
+                imobile_width = 468;
+                imobile_height = 60;
             </script>
             <script type="text/javascript" src="http://spdeliver.i-mobile.co.jp/script/ads.js?20101001"></script>
 

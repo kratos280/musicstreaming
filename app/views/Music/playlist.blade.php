@@ -1,5 +1,9 @@
 @extends('layouts.Music.layout',['page_id'=>'page2'])
 
+@section('og')
+    <meta name="keywords" content="{{$title}}">
+@stop
+
 @section('content')
     <div class="col-1">
         <h2>トップ100</h2>
@@ -12,8 +16,8 @@
             @endforeach
         </div>
     </div>
+    <h2>{{$title}}</h2>
     <div class="col-2 col-2-scroll">
-        <h2>{{$title}}</h2>
         @if($items)
             <?php $playlist = array() ?>
             @foreach($items as $item)

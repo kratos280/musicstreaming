@@ -16,7 +16,7 @@ class CreateTableSearchPlaylists extends Migration {
 			$t->bigIncrements('id');
 			$t->string('name', 255)->default('');
 			$t->string('artist', 255)->default('');
-			$t->string('playlist_id', 255);
+			$t->string('playlist_id', 255)->default('');
 			$t->timestamps();
 		});
 	}

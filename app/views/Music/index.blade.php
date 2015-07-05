@@ -33,7 +33,6 @@
 		<!-- audio player begin -->
 		<div id="jplayer"></div>
 		<div class="jp-audio">
-		<h2>New Song</h2>
 		<div class="jp-type-single">
 			<div id="jp_interface_1" class="jp-interface">
 			<ul class="jp-controls">
@@ -41,7 +40,6 @@
 				<li><a href="#" class="jp-pause"></a></li>
 				<li><a href="#" class="jp-prev">Previous Track</a></li>
 				<li><a href="#" class="jp-next">Next Track</a></li>
-				<li><a href="#" class="jp-more-songs">Listen to More Songs</a></li>
 			</ul>
 			<div class="jp-progress">
 				<div class="jp-seek-bar">
@@ -61,7 +59,7 @@
 					<div class="caption">
 						<p style="font-size: medium">{{{ $topAlbum["im"]["name"]}}}<br>{{$topAlbum["im"]["artist"] }}</p>
 					</div>
-					<p><a role="button" class="btn btn-primary" href="/playlist?params={{base64_encode(json_encode(array('name' => $topAlbum["im"]["name"], 'artist' => $topAlbum["im"]["artist"])))}}">View it</a></p>
+					<p><a role="button" class="btn btn-primary" href="/playlist?params={{base64_encode(json_encode(array('name' => $topAlbum["im"]["name"], 'artist' => $topAlbum["im"]["artist"])))}}">見る</a></p>
 				</div>
 			</div>
 		@endforeach

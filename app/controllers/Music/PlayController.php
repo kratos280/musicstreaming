@@ -28,18 +28,22 @@ class PlayController extends BaseController{
             $video_result = SearchVideosCaches::where(array('name' => $params['name'], 'artist' => $params['artist']))->first();
             if (!$video_result) {
                 $play_video = array_shift($items);
-                $video_result = new SearchVideosCaches();
-                $video_result->name = $params['name'];
-                $video_result->artist = $params['artist'];
-                $video_result->video_id = $play_video->getId()->videoId;
-                $video_result->video_title = $play_video->getSnippet()->title;
-                $video_result->img_url = $play_video->getSnippet()->getThumbnails()->medium->url;
-                $video_result->save();
+                if ($params['artist'] && $params['name']) {
+                    $video_result = new SearchVideosCaches();
+                    $video_result->name = $params['name'];
+                    $video_result->artist = $params['artist'];
+                    $video_result->video_id = $play_video->getId()->videoId;
+                    $video_result->video_title = $play_video->getSnippet()->title;
+                    $video_result->img_url = $play_video->getSnippet()->getThumbnails()->medium->url;
+                    $video_result->save();
+                } else {
+                    Session::put('playlist', null);
+                }
             }
 
-            $video_info['video_id'] = $video_result->video_id;
-            $video_info['video_title'] = $video_result->video_title;
-            $video_info['video_img'] = $video_result->img_url;
+            $video_info['video_id'] = $play_video->getId()->videoId;
+            $video_info['video_title'] = $play_video->getSnippet()->title;
+            $video_info['video_img'] = $play_video->getSnippet()->getThumbnails()->medium->url;
         }
 
         $playlist = Session::get('playlist');

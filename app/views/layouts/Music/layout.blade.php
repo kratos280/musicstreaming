@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="keywords" content="最高, 音楽動画, 連続再生, シャッフル, 再生, バックグラウンド, 音楽, 無料, music, 曲, サウンド, sound, アニソン, 洋楽, 邦楽, 公式">
+
     @yield('og')
 
     {{ HTML::style('css/bootstrap.min.css') }}
@@ -28,22 +30,17 @@
     <header>
         <nav>
             <ul>
-                <li class="active"><a href="{{URL::to('/');}}">ホーム</a></li>
+                <li class="active"><a href="{{URL::to('/');}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
             </ul>
         </nav>
-        {{--<h1><a href="index1.blade.php">Lilly Watson</a></h1>--}}
-        {{--<div class="header-slider">--}}
-            {{--<ul>--}}
-                {{--<li>This is one of <a href="http://blog.templatemonster.com/free-website-templates/">free website templates</a> created by TemplateMonster.com team. This website template is optimized for 1024X768 screen resolution.</li>--}}
-                {{--<li>This website template has several pages: About, Audio, Video, Gallery, Tour Dates, Contacts (note that contact us form – doesn’t work).</li>--}}
-                {{--<li>This <a href="http://blog.templatemonster.com/2011/04/12/free-music-website-template/" target="_blank" rel="nofollow">Free Music Website Template</a> goes with two packages – with PSD source files and without them. PSD source files are available for free.</li>--}}
-            {{--</ul>--}}
-        {{--</div>--}}
-        {{--<a href="#" class="hs-prev"><img src="img/theme/prev.png" alt=""></a>--}}
-        {{--<a href="#" class="hs-next"><img src="img/theme/next.png" alt=""></a>--}}
-        {{--<a href="#" class="header-more">Read More</a>--}}
+            <form method="POST" action="/search" class="input-group header-slider">
+                <input type="text" autofocus="autofocus" autocomplete="off" placeholder="キーワード" name="search" style="height: 50px" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" style="height: 50px;">検索</button>
+                </span>
+            </form>
     </header>
-    @yield('banner')
+@yield('banner')
     <article id="content">
         @yield('content')
         <div class="af clear"></div>
