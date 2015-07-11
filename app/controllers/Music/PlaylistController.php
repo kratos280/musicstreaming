@@ -3,8 +3,8 @@ require_once(__DIR__ . '/../../../vendor/magpierss-0.72/rss_fetch.inc');
 
 class PlaylistController extends BaseController{
 
-    public function playlistView () {
-        $params = json_decode(base64_decode(Input::get('params')),true);
+    public function playlistView ($params) {
+        $params = json_decode(base64_decode(str_replace('-----', '/', $params)),true);
         $topSongs = fetch_rss("https://itunes.apple.com/jp/rss/topsongs/limit=100/xml")->items;
 
         $playlist_id = SearchPlaylist::where(array('name' => $params['name'], 'artist' => $params['artist']))->first();

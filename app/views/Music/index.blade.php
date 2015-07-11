@@ -35,10 +35,10 @@
 			<?php $playlist = array() ?>
 			@foreach( $topSongs as $key => $topSong )
 				<?php $playlist[] = array('name' => $topSong["im"]["name"], 'artist' => $topSong["im"]["artist"], 'img' => $topSong["im"]["image"]) ?>
-				<a href="/play?params={{{base64_encode(json_encode(array('name' => $topSong["im"]["name"], 'artist' => $topSong["im"]["artist"])))}}}" rel="prettyPhoto">
+				<a href="/play/{{{str_replace('/', '-----',base64_encode(json_encode(array('name' => $topSong["im"]["name"], 'artist' => $topSong["im"]["artist"]))))}}}" rel="prettyPhoto">
 					<img class="p1" src="{{{$topSong["im"]["image"]}}}" alt="">
 				</a>
-				<div class="alc"><a href="/play?params={{{base64_encode(json_encode(array('name' => $topSong["im"]["name"], 'artist' => $topSong["im"]["artist"])))}}}">{{{ $topSong["im"]["name"] . ' - ' . $topSong["im"]["artist"] }}}</a></div>
+				<div class="alc"><a href="/play?params={{{str_replace('/', '-----', base64_encode(json_encode(array('name' => $topSong["im"]["name"], 'artist' => $topSong["im"]["artist"]))))}}}">{{{ $topSong["im"]["name"] . ' - ' . $topSong["im"]["artist"] }}}</a></div>
 			@endforeach
 				<?php Session::put('playlist', $playlist) ?>
 		</div>
@@ -78,7 +78,7 @@
 					<div class="caption">
 						<p style="font-size: medium">{{{ $topAlbum["im"]["name"]}}}<br>{{$topAlbum["im"]["artist"] }}</p>
 					</div>
-					<p><a role="button" class="btn btn-primary" href="/playlist?params={{base64_encode(json_encode(array('name' => $topAlbum["im"]["name"], 'artist' => $topAlbum["im"]["artist"])))}}">{{trans('messages.View')}}</a></p>
+					<p><a role="button" class="btn btn-primary" href="/playlist/{{base64_encode(json_encode(array('name' => $topAlbum["im"]["name"], 'artist' => $topAlbum["im"]["artist"])))}}">{{trans('messages.View')}}</a></p>
 				</div>
 			</div>
 		@endforeach

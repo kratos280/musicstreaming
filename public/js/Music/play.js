@@ -22,7 +22,7 @@ function onPlayerReady(event) {
 // when video ends
 function onPlayerStateChange(event) {
     if(event.data === 0) {
-        window.location.href = '/play?params='+$('#player').data('nvid');
+        window.location.href = '/play/'+$('#player').data('nvid');
     }
 }
 

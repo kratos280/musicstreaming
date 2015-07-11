@@ -46,9 +46,9 @@
         <div class="list-group media-list" style="height: 50%">
             @foreach($playlist as $index => $item)
                 @if($item['video_id'])
-                    <?php $href = "/play?params=".base64_encode(json_encode(array('title' => $item['title'], 'videoId' => $item['video_id']))) ?>
+                    <?php $href = "/play/".str_replace('/', '-----',base64_encode(json_encode(array('title' => $item['title'], 'videoId' => $item['video_id'])))) ?>
                 @else
-                    <?php $href = "/play?params=".base64_encode(json_encode(array('name' => $item['name'], 'artist' => $item['artist']))) ?>
+                    <?php $href = "/play/".str_replace('/', '-----',base64_encode(json_encode(array('name' => $item['name'], 'artist' => $item['artist'])))) ?>
                 @endif
             <a href="{{$href}}" class="list-group-item">
                 <div class="media-left" <?php if (Session::get('current_song_index') == $index) echo('rel="prettyPhoto"') ?>>
@@ -74,7 +74,7 @@
         <h2>{{trans('messages.OtherVideos')}}</h2>
         <div class="list-group media-list" style="height: 50%">
             @foreach($items as $item)
-                <a href="/play?params={{base64_encode(json_encode(array('title' => $item->getSnippet()->title, 'videoId' => $item->getId()->videoId)))}}" class="list-group-item">
+                <a href="/play/{{str_replace('/', '-----',base64_encode(json_encode(array('title' => $item->getSnippet()->title, 'videoId' => $item->getId()->videoId))))}}" class="list-group-item">
                     <div class="media-left">
                         <img class="media-object"
                              style="width: 128px; height: 78px;"

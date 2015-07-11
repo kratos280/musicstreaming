@@ -10,9 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::group([
-    "domain" => "musiconlinetop1.com"
-], function() {
+$musicDomainFunction =  function() {
     Route::get ('/', 'HomeController@getIndex' );
 
     Route::post('search', function() {
@@ -21,9 +19,9 @@ Route::group([
         return Redirect::to('/play?params='.base64_encode(json_encode(array('name' => $keyword))));
     });
 
-    Route::get('/playlist','PlaylistController@playlistView');
+    Route::get('/playlist/{params}','PlaylistController@playlistView');
 
-    Route::get('play', 'PlayController@play');
+    Route::get('play/{params}', 'PlayController@play');
 
     Route::group(
         [
@@ -55,7 +53,10 @@ Route::group([
             Route::get('audios/playlists', 'AudiosController@getPlaylists');
             Route::get('auth/logout', 'AuthController@logout');
         });
-});
+};
+
+Route::group(["domain" => "musiconlinetop1.com"], $musicDomainFunction);
+Route::group(["domain" => "www.musiconlinetop1.com"], $musicDomainFunction);
 
 Route::group([
     "domain" => "gameonlinevui.com"

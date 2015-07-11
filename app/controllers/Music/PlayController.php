@@ -2,8 +2,8 @@
 
 class PlayController extends BaseController{
 
-    public function play() {
-        $params = json_decode(base64_decode(Input::get('params')), true);
+    public function play($params) {
+        $params = json_decode(base64_decode(str_replace('-----', '/',$params)), true);
 
         $google_client = new Google_Client();
         $google_client->setDeveloperKey("AIzaSyD1nDPXUdeHURY3G3uVPVBRRLc99jyM84w");
@@ -57,7 +57,7 @@ class PlayController extends BaseController{
                     if ($info['video_id'] == $params['videoId']) {
                         Session::put('current_song_index', $index);
                         if ($index < (count($playlist) - 1)) {
-                            Session::put('next_song', base64_encode(json_encode(array('videoId' => $playlist[$index + 1]['video_id'], 'title' => $playlist[$index + 1]['title']))));
+                            Session::put('next_song', str_replace('/', '-----',base64_encode(json_encode(array('videoId' => $playlist[$index + 1]['video_id'], 'title' => $playlist[$index + 1]['title'])))));
                         } else {
                             Session::put('next_song', null);
                         }
@@ -67,7 +67,7 @@ class PlayController extends BaseController{
                     if ($info['name'] == $params['name'] && $info['artist'] == $params['artist']) {
                         Session::put('current_song_index', $index);
                         if ($index < (count($playlist) - 1)) {
-                            Session::put('next_song', base64_encode(json_encode(array('name' => $playlist[$index + 1]['name'], 'artist' => $playlist[$index + 1]['artist']))));
+                            Session::put('next_song', str_replace('/', '-----',base64_encode(json_encode(array('name' => $playlist[$index + 1]['name'], 'artist' => $playlist[$index + 1]['artist'])))));
                         } else {
                             Session::put('next_song', null);
                         }
