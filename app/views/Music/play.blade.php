@@ -58,7 +58,7 @@
                          data-holder-rendered="true">
                 </div>
                 <div class="media-body">
-                    <?php $title = $item['title'] ? $item['title'] : $item['name'].'-'.$item['artist'];
+                    <?php $title = $item['title'] ? $item['title'] : $item['name'].' ('.$item['artist'].')';
                     if (strlen($title) > 50) {
                         $title = substr($title, 0, 50) . '...';
                     }

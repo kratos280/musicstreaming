@@ -48,8 +48,8 @@
     </article>
 </div>
 <footer>
-<span>
-
+<span style="font-size: 25px">
+Music Online Top 1
 </span>
 </footer>
 @yield('scriptsFooter')

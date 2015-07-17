@@ -1,4 +1,5 @@
 <?php
+require_once(__DIR__ . '/../../../vendor/magpierss-0.72/rss_fetch.inc');
 
 class PlayController extends BaseController{
 
@@ -75,6 +76,17 @@ class PlayController extends BaseController{
                     }
                 }
             }
+        }
+
+        if (!$playlist) {
+            $topSongs = fetch_rss("https://itunes.apple.com/jp/rss/topsongs/limit=100/xml")->items;
+            Session::put('current_song_index', -1);
+            Session::put('next_song', str_replace('/', '-----',base64_encode(json_encode(array('name' => $topSongs[0]["im"]["name"], 'artist' => $topSongs[0]["im"]["artist"])))));
+            $playlist = array();
+            foreach ($topSongs as $topSong) {
+                $playlist[] = array('name' => $topSong["im"]["name"], 'artist' => $topSong["im"]["artist"], 'img' => $topSong["im"]["image"]);
+            }
+            Session::put('playlist', $playlist);
         }
 
         return View::make('Music.play', ['items' => $items, 'video_info' => $video_info]);
