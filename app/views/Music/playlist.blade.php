@@ -2,6 +2,7 @@
 
 @section('og')
     <meta name="keywords" content="{{$title}}">
+    <title>{{$title}}</title>
 @stop
 
 @section('content')
