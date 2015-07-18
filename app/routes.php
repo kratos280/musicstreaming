@@ -23,6 +23,11 @@ $musicDomainFunction =  function() {
 
     Route::get('play/{params}', 'PlayController@play');
 
+    Route::get('play', function () {
+        $params = Input::get('params');
+        return Redirect::to('play/'.str_replace('/', '-----',$params));
+    });
+
     Route::group(
         [
             'before' => '',
