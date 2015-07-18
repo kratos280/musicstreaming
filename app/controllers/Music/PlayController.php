@@ -76,6 +76,13 @@ class PlayController extends BaseController{
                     }
                 }
             }
+            if (!Session::get('next_song')) {
+                if ($info['video_id']) {
+                    Session::put('next_song', str_replace('/', '-----',base64_encode(json_encode(array('videoId' => $playlist[0]["videoId"], 'title' => $playlist[0]["title"])))));
+                } else {
+                    Session::put('next_song', str_replace('/', '-----',base64_encode(json_encode(array('name' => $playlist[0]["name"], 'artist' => $playlist[0]["artist"])))));
+                }
+            }
         }
 
         if (!$playlist) {

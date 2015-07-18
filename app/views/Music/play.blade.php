@@ -2,6 +2,7 @@
 
 @section('og')
     <title>{{$video_info['video_title']}}</title>
+    <meta name="keywords" content="{{$video_info['video_title']}}">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:title" content="{{$video_info['video_title']}}" />
     <meta property="og:description" content="{{$video_info['video_title']}}" />
