@@ -2,6 +2,7 @@
 <html lang="{{Config::get('app.locale')}}">
 <head>
     <meta charset="UTF-8">
+    <meta name="msvalidate.01" content="9160C63847CB56B17D4DCCA5BB839F80" />
     <meta name="keywords" content="最高, 音楽動画, 連続再生, シャッフル, 再生, バックグラウンド, 音楽, 無料, music, 曲, サウンド, sound, アニソン, 洋楽, 邦楽, 公式">
 
     @yield('og')
