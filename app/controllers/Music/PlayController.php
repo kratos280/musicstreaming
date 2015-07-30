@@ -12,9 +12,12 @@ class PlayController extends BaseController{
         $video_info = array();
         if (array_key_exists('videoId', $params)) {
             //have video id and title
+            if ($params['videoId'] == "LA7xcXOCAxU") {
+                $params['videoId'] = "iRI2dNtVPis";
+            }
             $video = $youtube->videos->listVideos('snippet', array('id' => $params['videoId']))->getItems()[0];
 
-            $search_response = $youtube->search->listSearch("snippet", array('order' => 'relevance', 'type' => 'video', 'regionCode' => 'JP', 'maxResults' => 49, 'q' => $params['title']));
+            $search_response = $youtube->search->listSearch("snippet", array('order' => 'relevance', 'type' => 'video', 'maxResults' => 49, 'q' => $params['title']));
             $items = $search_response->getItems();
 
             $video_info['video_id'] = $video->getId();
