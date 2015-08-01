@@ -20,8 +20,12 @@ class PlayController extends BaseController{
             $search_response = $youtube->search->listSearch("snippet", array('order' => 'relevance', 'type' => 'video', 'maxResults' => 49, 'q' => $decoded_params['title']));
             $items = $search_response->getItems();
             if (!$video || !$items) {
-                $error_link = new ErrorLinks();
-                $error_link->link = "play/".$params;
+                $link = "play/".$params;
+                $error_link = ErrorLinks::where(array('link' => $link))->first();
+                if (!$error_link) {
+                    $error_link = new ErrorLinks();
+                    $error_link->link = "play/".$params;
+                }
                 $error_link->save();
                 return Redirect::to('/');
             }
@@ -34,17 +38,25 @@ class PlayController extends BaseController{
             $search_response = $youtube->search->listSearch("snippet", array('order' => 'relevance', 'type' => 'video', 'regionCode' => 'JP', 'maxResults' => 50, 'q' => $decoded_params['name'].' '.$decoded_params['artist']));
             $items = $search_response->getItems();
             if (!$items) {
-                $error_link = new ErrorLinks();
-                $error_link->link = "play/".$params;
+                $link = "play/".$params;
+                $error_link = ErrorLinks::where(array('link' => $link))->first();
+                if (!$error_link) {
+                    $error_link = new ErrorLinks();
+                    $error_link->link = "play/".$params;
+                }
                 $error_link->save();
                 return Redirect::to('/');
             }
             $video_result = SearchVideosCaches::where(array('name' => $decoded_params['name'], 'artist' => $decoded_params['artist']))->first();
             if (!$video_result) {
                 $play_video = array_shift($items);
-                if (!$items) {
-                    $error_link = new ErrorLinks();
-                    $error_link->link = "play/".$params;
+                if (!$play_video || !$items) {
+                    $link = "play/".$params;
+                    $error_link = ErrorLinks::where(array('link' => $link))->first();
+                    if (!$error_link) {
+                        $error_link = new ErrorLinks();
+                        $error_link->link = "play/".$params;
+                    }
                     $error_link->save();
                     return Redirect::to('/');
                 }
